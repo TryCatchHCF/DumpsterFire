@@ -4,7 +4,7 @@ DumpsterFire Toolset - "Security Incidents In A Box!"
 
 Build repeatable, time-delayed, distributed security events; Easily create custom event chains for Blue Team drills and sensor / alert mapping; Red Team can create decoy incidents, distractions, and lures to support and scale their operations; Turn paper tabletop exercises into controlled "live fire" range events; Cross-platform and menu-driven; Dynamically extensible - write your own Fire module, drop it into the FireModules directory, the DumpsterFire toolset will auto-detect at startup and make your new Fire module available for use.
 
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/screenshots/DumpsterFireMainMenu.png></img>
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFireMainMenu.png></img>
 
 # Author
 
@@ -26,17 +26,17 @@ Ever wanted to simultaneously rickroll all of your opponents’ systems during y
 
 Here's a "Wayward Employee" DumpsterFire (included with the project). In this scenario, someone on your network takes an interest in hacking and chooses your network as their playground.
 
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/screenshots/WaywardEmployeeExample.png></img>
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/WaywardEmployeeExample.png></img>
 
 And here's a "This Is Fine" Distraction DumpsterFire (also included with the project). This DumpsterFire is date-time triggered, and could be copied and executed across multiple networks, generating network scans, brute-force credential attacks, and other activities to distract response teams.
 
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/screenshots/DistractionExample.png></img>
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DistractionExample.png></img>
 
 # Accountability
 
 DumpsterFire creates a date-time stamped event log so that Red- and Blue teams can coordinate and track events, correlating them to what was detected (or not detected) by your sensors, which alerts did or did not trigger, etc. It also allows teams to confirm which events were part of your operation / exercise, keeping everyone out of trouble. All date-time tracking is performed in UTC, so your global operations can be easily correlated without worrying about conversions between timezones and international date lines.
 
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/screenshots/FireDateTimeStamps.png></img>
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/FireDateTimeStamps.png></img>
 
 # Tutorial
 See my CactusCon 2017 slides (included in project). The slides are written to stand on their own, providing background, approaches, specific use cases, and more.
@@ -125,10 +125,10 @@ The menu-driven DumpsterFire Factory script guides you through each step, with c
      - Save new Dumpster Fire into your collection
 	+ Name your Dumpster Fire (no spaces, just letters, numbers, underscores, hyphens)
 
-# Sample DumpsterFires (Included in Project for Quick Start)
+# Sample DumpsterFires
 
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/screenshots/DumpsterFire1.png></img>
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/screenshots/DumpsterFire.png></img>
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire1.png></img>
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire.png></img>
 
 # Write Your Own Custom Fire Modules
 
@@ -136,8 +136,8 @@ DumpsterFire is ready to use out of the box, but it's real value is in how easil
 
 Want to keep your custom Fire modules completely separate in their own Category? Easy! Just create a new directory under FireModules/ and the DumpsterFire toolset will auto-detect and make it available as a new Category of Fires.
 
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/screenshots/CategoriesBefore.png></img>
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/screenshots/CategoriesAfter.png></img>
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/CategoriesBefore.png></img>
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/CategoriesAfter.png></img>
 
 Your Fire module inherits from a class called FireModule. Copy the Fire module template from the Examples/ directory and implement the following class methods:
 
@@ -161,4 +161,4 @@ At the command line, give the 'testNewFireModule.py' script the relative filepat
 
 # testNewFireModule.py Example
 
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/screenshots/testNewFireModule.png></img>
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/testNewFireModule.png></img>
