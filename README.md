@@ -96,7 +96,7 @@ Without creating any new FireModule classes, you can use these existing "custom"
 - FireModules/OSCommand/os_win_powershell_command.py
 - FireModules/OSCommand/os_osx_applescript_command.py
 
-You can add any number of these to your DumpsterFire, each with its own custom actions. For example, you could chain together a dozen 'custom_url.py' Fire modules to build a complete, tailored browsing narrative, followed by various 'os_cli_command.py' instances that execute system commands to further reinforce your desired narrative of events. The 'os_cli_command.py' in particular gives you incredible flexbility. Each individual Fire in your DumpsterFire event chain takes any shell commands that are appropriate for the host's OS:
+You can add any number of these to your DumpsterFire, each with its own custom actions. For example, you could chain together a dozen 'custom_url.py' Fire modules to build a complete, tailored browsing narrative. You could then have various 'OSCommand/' Fire instances that execute system commands to further reinforce your desired narrative of events. The 'OSCommand/' Fires in particular give you incredible flexbility. Each individual Fire in your DumpsterFire event chain takes any shell commands that are appropriate for the host's OS:
 
 Linux/Unix:
 
