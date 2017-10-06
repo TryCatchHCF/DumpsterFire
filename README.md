@@ -57,7 +57,7 @@ Once all of the Fires have been configured, you'll then be given the option to a
 
 After all of the Fires have been configured and optional individual Fire delays assigned, you'll be asked to name your DumpsterFire. Do not use spaces or odd special characterse, just stick to letters, numbers, underscores, and hyphens.
 
-Voila! You have now created your first DumpsterFire. Time to choose ignite one.
+Voila! You have now created your first DumpsterFire. Time to light one up!
 
 When you're ready to ignite a DumpsterFire, the tool will first show you the DumpsterFire's settings. If everything looks good, you'll be asked if you want to assign a date-time delay before igniting. All date-time processing is done in UTC to ensure consistent execution regardless of your DumpsterFire's location of execution. Otherwise you can decline the date-time delay and execution will begin immediately after you give final confirmation.
 
