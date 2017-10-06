@@ -63,17 +63,17 @@ As the DumpsterFire executes, you'll be given regular date-time stamped feedback
 
 # Files & Directories
 
-dumpsterFireFactory.py - Menu-driven tool for creating, configuring, scheduling, and executing DumpsterFires
+**dumpsterFireFactory.py** - Menu-driven tool for creating, configuring, scheduling, and executing DumpsterFires
 
-FireModules/ - Directory that contains subdirectories of Fires, each subdirectory is a specific Category of Fires to keep your Fire modules organized. Fires are added to a DumpsterFire to create a chain of events and actions.
+**FireModules/** - Directory that contains subdirectories of Fires, each subdirectory is a specific Category of Fires to keep your Fire modules organized. Fires are added to a DumpsterFire to create a chain of events and actions.
 
-DumpsterFires/ - Directory containing your collection of DumpsterFires
+**DumpsterFires/** - Directory containing your collection of DumpsterFires
 
-igniteDumpsterFire.py - Headless script, invoked at command line with the local filepath of the DumpsterFire you wish to execute. Useful for igniting distributed DumpsterFires.
+**igniteDumpsterFire.py** - Headless script, invoked at command line with the local filepath of the DumpsterFire you wish to execute. Useful for igniting distributed DumpsterFires.
 
-testFireModule.py - Utility script for unit testing the Class methods of your custom Fire modules, without the hassle of running through the entire DumpsterFire process to debug.
+**testFireModule.py** - Utility script for unit testing the Class methods of your custom Fire modules, without the hassle of running through the entire DumpsterFire process to debug.
 
-__init__.py files - Required to make Python treat directories as containing Python packages, allows DumpsterFire toolset to find and load Fire modules.
+**"__init__.py"** files - Required to make Python treat directories as containing Python packages, allows DumpsterFire toolset to find and load Fire modules.
 
 # Requires
 Python 2.7.x
