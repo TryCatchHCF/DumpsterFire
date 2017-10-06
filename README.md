@@ -81,7 +81,7 @@ Python 2.7.x
 # Run DumpsterFire Factory
 $ ./dumpsterFireFactory.py
 
-# Customizing You Dumpster Fires
+# Customizing Your Dumpster Fires
 
 DumpsterFire's modular design gives you flexibility to create any number of event-chain narratives. Fire modules that have configurable settings allow you to set target networks or system, etc. There are a few Fire modules, however, that give you immediate flexibility to greatly expand your DumpsterFire event sequences.
 
