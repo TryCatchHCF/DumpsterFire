@@ -55,7 +55,7 @@ When you're building a DumpsterFire, after you've chosen all of the Fire modules
 
 Once all of the Fires have been configured, you'll then be given the option to assign individual time delays to your Fires. This allows the DumpsterFire to better mimic real operations when executing its chain of events. For example, the first Fire may visit various hacking Websites, the next Fire then downloads a few common hacking tools before launching the third Fire which starts scanning the local network. If this all happened within seconds of each other, no SOC analyst is going to believe it was a human. By adding several minutes or even hours between those events, you create a more realistic chain of events.
 
-After all of the Fires have been configured and optional individual Fire delays assigned, you'll be asked to name your DumpsterFire. Do not use spaces or odd special characterse, just stick to letter, numbers, underscores, and hyphens.
+After all of the Fires have been configured and optional individual Fire delays assigned, you'll be asked to name your DumpsterFire. Do not use spaces or odd special characterse, just stick to letters, numbers, underscores, and hyphens.
 
 Voila! You have now created your first DumpsterFire. Time to choose ignite one.
 
