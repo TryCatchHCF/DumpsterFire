@@ -2,7 +2,7 @@
 
 DumpsterFire Toolset - "Security Incidents In A Box!"
 
-The DumpsterFire Toolset is a modular, menu-driven, cross-platform tool for building repeatable, time-delayed, distributed security events. Easily create custom event chains for Blue Team drills and sensor / alert mapping. Red Teams can create decoy incidents, distractions, and lures to support and scale their operations. Turn paper tabletop exercises into controlled "live fire" range events.
+The DumpsterFire Toolset is a modular, menu-driven, cross-platform tool for building repeatable, time-delayed, distributed security events. Easily create custom event chains for Blue Team drills and sensor / alert mapping. Red Teams can create decoy incidents, distractions, and lures to support and scale their operations. Turn paper tabletop exercises into controlled "live fire" range events. Build event sequences ("narratives") to simulate realistic scenarios and generate corresponding network and filesystem artifacts.
 
 The toolset is designed to be dynamically extensible, allowing you to create your own Fires (event modules) to add to the included collection of toolset Fires. Just write your own Fire module and drop it into the FireModules directory. The DumpsterFire toolset will auto-detect your custom Fires at startup and make them available for use.
 
