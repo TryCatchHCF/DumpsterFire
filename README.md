@@ -38,7 +38,7 @@ And here's a "This Is Fine" Distraction DumpsterFire (also included with the pro
 
 DumpsterFire creates a date-time stamped event log so that Red- and Blue teams can coordinate and track events, correlating them to what was detected (or not detected) by your sensors, which alerts did or did not trigger, etc. It also allows teams to confirm which events were part of your operation / exercise, keeping everyone out of trouble. All date-time tracking is performed in UTC, so your global operations can be easily correlated without worrying about conversions between timezones and international date lines.
 
-The auto-generated date-time stamped event logs also provide an effortless value add to your engagements. Generate a collection of DumpsterFires for your client engagements, tailored to their attack surfaces. At the end of your operations you can hand over the logs as a bonus Purple Team deliverable for your client for post-engagement analysis.
+The auto-generated date-time stamped event logs also provide an effortless value add to your engagements. Generate a collection of DumpsterFires for your client engagements, tailored to their attack surfaces. At the end of your operations you can hand over the logs as a bonus Purple Team deliverable to your client for post-engagement analysis.
 
 <img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/FireDateTimeStamps.png></img>
 
