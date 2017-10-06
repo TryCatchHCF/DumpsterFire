@@ -148,17 +148,17 @@ Want to keep your custom Fire modules completely separate in their own Category?
 
 Your Fire module inherits from a class called FireModule. Copy the Fire module template from the Examples/ directory and implement the following class methods:
 
-Configure() - Prompts user for input, populates FireModule’s parameters
+**Configure()** - Prompts user for input, populates FireModule’s parameters
 
-Description() - Return a string containing a description of the FireModule
+**Description()** - Return a string containing a description of the FireModule
 
-GetParameters() - Returns a single string of Fire's parameters
+**GetParameters()** - Returns a single string of Fire's parameters
 
-SetParameters( string ) - Takes a single string & populates Fire's members
+**SetParameters( string )** - Takes a single string & populates Fire's members
 
-ActivateLogging( boolean ) - Sets flag for Fire to generate a log of its activities (great for review)
+**ActivateLogging( boolean )** - Sets flag for Fire to generate a log of its activities (great for review)
 
-Ignite() - Executes Fire's actions
+**Ignite()** - Executes Fire's actions
 
 # Utility Scripts
 
