@@ -73,7 +73,7 @@ As the DumpsterFire executes, you'll be given regular date-time stamped feedback
 
 **igniteDumpsterFire.py** - Headless script, invoked at command line with the local filepath of the DumpsterFire you wish to execute. Useful for igniting distributed DumpsterFires.
 
-**testFireModule.py** - Utility script for unit testing the Class methods of your custom Fire modules, without the hassle of running through the entire DumpsterFire process to debug.
+**testFireModule.py** - Utility script for unit testing the Class methods of your custom Fire modules, without the hassle of running through the entire DumpsterFire Factory process to debug.
 
 **"__init__.py"** files - Required to make Python treat directories as containing Python packages, allows DumpsterFire toolset to find and load Fire modules.
 
@@ -166,8 +166,8 @@ Your Fire module inherits from a class called FireModule. Copy the Fire module t
 
 Testing Python classes can be annoying, especially when you want to unit test each of the class's methods, forcing you to slog through all the application's use cases to make sure each class method is executed in proper order. Bleh. So I've written and included a script that will properly invoke each method of your new FireModule-derived classes, enabling you to quickly churn-and-burn your way through debugging. You're welcome. :-)
 
-At the command line, give the 'testNewFireModule.py' script the relative filepath to your custom Fire module. The test script will call each of the required FireModule methods for you, in proper sequence (getting configuration prior to saving, etc.). The test script doesn't use exception handling, because Python only gives you useful errors (like pointing out that missing double-quote) when it crashes. Crash and burn your way to a successful custom Fire!
+At the command line, give the 'testFireModule.py' script the relative filepath to your custom Fire module. The test script will call each of the required FireModule methods for you, in proper sequence (getting configuration prior to saving, etc.). The test script doesn't use exception handling, because Python only gives you useful errors (like pointing out that missing double-quote) when it crashes. Crash and burn your way to a successful custom Fire!
 
-# testNewFireModule.py Example
+# testFireModule.py Example
 
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/testNewFireModule.png></img>
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/testFireModule.png></img>
