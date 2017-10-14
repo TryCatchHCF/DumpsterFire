@@ -37,9 +37,7 @@ The auto-generated date-time stamped event logs also provide an effortless value
 <img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/FireDateTimeStamps.png></img>
 
 # Tutorial
-See my CactusCon 2017 slides (included in project). The slides are written to stand on their own, providing background, approaches, specific use cases, and more.
-
-For a quick start on DumpsterFire, see the cleverly titled file "README_GETTING_STARTED.txt" in the project for a walkthrough.
+See my CactusCon 2017 slides (included in project). The slides are written to stand on their own, providing background, approaches, specific use cases, and more. They'll put everything in context.
 
 # Overview
 
