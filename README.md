@@ -115,7 +115,7 @@ OSX (AppleScript):
 (Example)
 
 
-Creating a DumpsterFire:
+# Creating a DumpsterFire:
 
 The menu-driven DumpsterFire Factory script guides you through each step, with context-appropriate help along the way.
 
