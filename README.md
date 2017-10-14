@@ -119,20 +119,7 @@ Creating a DumpsterFire:
 
 The menu-driven DumpsterFire Factory script guides you through each step, with context-appropriate help along the way.
 
-     - Build a list of Fires, in the desired order of execution
-     	+ Select a Fire Category
-     	+ Review and Select a Fire from Category
-     	+ Repeat until list is complete
-     - Review list of selected Fires
-     - Configure the Fires
-     	+ Fires that have configuration options will prompt you for input
-     - Choose timing of sequential Fire execution: Immediate or Relative Offset
-     	+ Immediate: Each Fire starts immediately after previous Fire completes
-     	+ Relative Offset: Each Fire delays for [hours:minutes] after previous Fire completes
-     		* Set separate Relative Offset for each Fire in your Dumpster Fire
-     - Review Dumpster Fire
-     - Save new Dumpster Fire into your collection
-	+ Name your Dumpster Fire (no spaces, just letters, numbers, underscores, hyphens)
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFireBuildHelp.png></img>
 
 # Sample DumpsterFires
 
