@@ -87,7 +87,7 @@ In our first example, we have a DumpsterFire that could be either a SOC drill or
 
 <img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire_Wayward_Employee.png></img>
 
-In the next example, Purple Teamers have created a DumpsterFire to run a choreographed series of port scans, each targeting different collections of ports & services, with varying probe rates as well. They've inserted a 5 minute delay between each scanning Fire to simplify isolating the traffic associated with each scanning Fire. When they run this DumpsterFire, they'll also see date-timestamps at the beginning of each Fire to help them deconflict the Fire's network activity vs. other network events.
+In the next example, Purple Teamers have created a DumpsterFire to help analyze and validate their sensor and alerting configurations. This DumpsterFire runs a choreographed series of port scans, each targeting different collections of ports & services, with varying probe rates as well. They've inserted a 5 minute delay between each scanning Fire to simplify isolating the traffic associated with each scanning Fire. When they run this DumpsterFire, they'll also see date-timestamps at the beginning of each Fire to help them deconflict the Fire's network activity vs. other network events.
 
 <img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire_Purple_Team.png></img>
 
