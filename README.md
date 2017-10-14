@@ -75,7 +75,7 @@ As the DumpsterFire executes, you'll be given regular date-time stamped feedback
 
 **testFireModule.py** - Utility script for unit testing the Class methods of your custom Fire modules, without the hassle of running through the entire DumpsterFire Factory process to debug.
 
-**"__init__.py"** files - Required to make Python treat directories as containing Python packages, allows DumpsterFire toolset to find and load Fire modules.
+**"&#95;&#95;init&#95;&#95;.py"** files - Required to make Python treat directories as containing Python packages, allows DumpsterFire toolset to find and load Fire modules.
 
 # Requires
 Python 2.7.x
