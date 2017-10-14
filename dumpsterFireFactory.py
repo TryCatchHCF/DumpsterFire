@@ -23,12 +23,15 @@
 #
 # 	Each DumpsterFire includes one or more Fire modules
 #
+#	To ignite an existing DumpsterFire in "headless" mode, use 'igniteDumpsterFire.py'
+#	script located in the same directory.
+#
 # Example:  
 #
 #   $ ./dumpsterFireFactory.py 
 # 
 
-import os, sys, getopt, datetime, random, importlib, json
+import os, sys, getopt, datetime, time, random, importlib, json, igniteDumpsterFire
 
 
 # Each DumpsterFire includes one or more DumpsterFire Elements
@@ -44,44 +47,51 @@ class DumpsterFire:
 	mName = ""
 	mDescription = ""
 	mFires = []	 # List of FireNodes
-	mDelayLaunch = 0
-	mLaunchDateTimeUTC = datetime.datetime.utcnow()	# If delayed launch selected, use this
-	# FLAWED - CHANGE TO DERIVE LOCAL TIME DIRECTLY FROM mLaunchDateTimeUTC TO AVOID EDGE CASES
-	mLaunchDateTimeLocal = datetime.datetime.now()	# If delayed launch selected, use this
+	mDelayLaunch = False
+	# Set default launch date to now, basically "Immediately", so we have a valid date initialized
+	mLaunchDateTimeUTC = datetime.datetime.utcnow()	# Default to now, basically "Immediate"
 
 
+kDumpsterFireDirectory = "DumpsterFires/"
 kLabelDumpsterFireName = "Name:"
 kLabelDumpsterFireDescription = "Description:"
 kLabelDelayedIgnition = "Delayed Ignition:"
 kLabelDelayedIgnitionStart = "Delayed Ignition Start:"
 kLabelDelayedIgnitionStartUTC = "Delayed Ignition Start (UTC):"
 
-# Need this to filter out the required "__init__.py" file from displayed FireModule lists
+# Used to filter out the required "__init__.py" files from displayed FireModule lists
 kLabelDirInitFile = "__init__.py"
 
-# Load lists of DumpsterFires & Fires 
+# Create lists of DumpsterFires, Fire Categories, and Fires 
+# Global variables can be a source of trouble, and yet here I am...
+# Used for menu-driven interaction while browsing DumpsterFires and Fires
 
 gDumpsterFires = []
 gFireCategories = []
 gFires = []
 gDumpsterFire = DumpsterFire
 
-
+# Load the list of saved DumpsterFires
 for root, dirs, files in os.walk( "./DumpsterFires" ):
 	for file in files:
 		if file.endswith('.fyr'):
 			gDumpsterFires.append( file )
 	    
+# Load the list of available Fire Categories, basically any directory in "./FireModules/"
 for root, dirnames, filenames in os.walk( "./FireModules" ):
 	for dir in dirnames:
 		gFireCategories.append( dir )
 	    
+# Lists of Fires are loaded based on user's selection of a Category, dynamically
+# populates per Category
+
+
 
 # ================================================================================================
 #
-# Function:
+# Function:  PrintBannerFlames()
 #
-# Description:
+# Description:  Print those little ASCII flames to give some visual flavor to menu-driven interfaces
 #
 # ================================================================================================
 
@@ -100,9 +110,11 @@ def PrintBannerFlames():
 
 # ================================================================================================
 #
-# Function:
+# Function:  BuildDumpsterFire()
 #
-# Description:
+# Description:  High level method to that walks the user through the process of building
+# DumpsterFires. Prints in-context help describing the process, then moves into the steps.
+# See the printed context help below for a description of the workflow.
 #
 # ================================================================================================
 
@@ -134,8 +146,11 @@ def BuildDumpsterFire():
 	print "     - Save new Dumpster Fire for future use"
 	print ""
 
+	newDumpsterFire.mName = "Unnamed"
+
 	AddFires( newDumpsterFire )
 
+	print ""
 	choice = raw_input("Continue building this Dumpster Fire? [y/n]: ")
 
 	if choice == "y":
@@ -144,7 +159,7 @@ def BuildDumpsterFire():
 		ConfigureDumpsterFire( newDumpsterFire )
 
 		print ""
-		ReviewDumpsterFire( newDumpsterFire )
+		PrintDumpsterFireConfig( newDumpsterFire )
 
 		print "" 
 		print "" 
@@ -167,9 +182,10 @@ def BuildDumpsterFire():
 
 # ================================================================================================
 #
-# Function:
+# Function:  ConfigureExistingDumpsterFire()
 #
-# Description:
+# Description:  Prompts user to select a saved DumpsterFire, then walks them through the process
+# of updating its configuration.
 #
 # ================================================================================================
 
@@ -178,44 +194,51 @@ def ConfigureExistingDumpsterFire():
 	selection = SelectDumpsterFire()
 	print ""
 
-	thisDumpsterFire = LoadDumpsterFireConfig( gDumpsterFires[ selection ] )
+	if ( selection > -1 ):
+
+		thisDumpsterFire = LoadDumpsterFireConfig( kDumpsterFireDirectory + gDumpsterFires[ selection ] )
 	
-	ConfigureDumpsterFire( thisDumpsterFire )
+		ConfigureDumpsterFire( thisDumpsterFire )
 
-	print "Storing Dumpster Fire..."
-	StoreDumpsterFireConfig( thisDumpsterFire )
-	print "Dumpster Fire saved."
-	print ""
+		PrintDumpsterFireConfig( thisDumpsterFire )
 
-	# Free up the allocated space or gets mucked up from repeated calls to this method
-	del thisDumpsterFire.mFires[ : ]
-	del thisDumpsterFire
+		print ""
+		print "Storing Dumpster Fire..."
+		SaveDumpsterFire( thisDumpsterFire )
+		print ""
 
-	choice = raw_input( "Press return to continue... " )
-
+		# Free up the allocated space or gets mucked up from repeated calls to this method
+		del thisDumpsterFire.mFires[ : ]
+		del thisDumpsterFire
 	return
 
 
 
 # ================================================================================================
 #
-# Function:
+# Function:  ConfigureDumpsterFire()
 #
-# Description:
+# Description:  Loops through the provided DumpsterFire's list of Fire modules. 
+#
+# First creates the Python package name that leads to the current Fire module. Next, loads 
+# the matching Fire class and its own Configuration() method, which prompts the user for any 
+# needed config settings.
 #
 # ================================================================================================
 
 def ConfigureDumpsterFire( thisDumpsterFire ):
 
-	# Edit DumpsterFire Name
 	# Edit DumpsterFire Time Delay
-	# Loop over Fires
-	#	Call Fire's Configure() method
-	# Call ReviewDumpsterFire()
-	# Call SaveDumpsterFire()
+	# TO DO - TO DO - TO DO
+	# DEBUG DEBUG DEBUG
 
-	print "====  Configure Fires  ===="
+	print "====  Configure DumpsterFire  ===="
 	print ""
+
+	# Loop over Fires
+	#	Create Python package name from Fire name
+	#	Load matching Fire and its classes
+	#	Call Fire's Configure() method
 
 	i = 0
 
@@ -228,7 +251,7 @@ def ConfigureDumpsterFire( thisDumpsterFire ):
 		print "Current Fire: ", currentFire.mFireName
 		print ""
 
-		# Convert Fire's filepath to Python '.'-format
+		# Convert Fire's filepath to Python package '.'-format
 
 		pythFormatPathStr = currentFire.mFireName.replace( "/", "." )
 
@@ -263,15 +286,38 @@ def ConfigureDumpsterFire( thisDumpsterFire ):
 
 		i = i + 1
 
+	currentDT_UTC = datetime.datetime.utcnow()
+
+	print ""
+	print "-----------------  DumpsterFire Name  -----------------"
+	print ""
+	print "NOTE: DumpsterFire names must only contain letters, numbers, hyphens, and underscores"
+	print ""
+	thisDumpsterFire.mName = raw_input( "Enter name for new Dumpster Fire: " )
+	print ""
+
+	print "--------------  DumpsterFire Time Delay  --------------"
+	print ""
+	print "DumpsterFire Time Delay (UTC):", thisDumpsterFire.mLaunchDateTimeUTC.strftime( "%x %X" )
+	print "Current Time (UTC):", currentDT_UTC.strftime("%x %X")
+	print ""
+	choice = raw_input( "Create new time-delay for dumpster fire? [y/n]: ")
+
+	if choice == "y":
+		
+		thisDumpsterFire.mLaunchDateTimeUTC = BuildDateTime()
+		thisDumpsterFire.mDelayLaunch = True
+
 	return
 
 
 
 # ================================================================================================
 #
-# Function:
+# Function:  AddFires()
 #
-# Description:
+# Description:  Prompts the user through browsing the Fire Categories and selecting Fires from
+# each, building a list of Fires to the current DumpsterFire 
 #
 # ================================================================================================
 
@@ -325,9 +371,10 @@ def AddFires( thisDumpsterFire ):
 
 # ================================================================================================
 #
-# Function:
+# Function:  ReviewFires()
 #
-# Description:
+# Description:  Just prints of list of Fire names in the given DumpsterFire, used to check
+# progress while building a new DumpsterFire
 #
 # ================================================================================================
 
@@ -351,33 +398,11 @@ def ReviewFires( thisDumpsterFire ):
 
 # ================================================================================================
 #
-# Function:
+# Function:  AddTimeOffsetsToFires
 #
-# Description:
-#
-# ================================================================================================
-
-def ReviewDumpsterFire( thisDumpsterFire ):
-
-	i = 0
-	print "DUMPSTER FIRE: Schedule of Fires"
-	print "" 
-
-	while ( i < len( thisDumpsterFire.mFires )):
-
-		print "\t", thisDumpsterFire.mFires[ i ].mFireName + ", Time Offset: ",  \
-			str( thisDumpsterFire.mFires[ i ].mOffsetHours ).zfill(2) + ":" +  \
-			str( thisDumpsterFire.mFires[ i ].mOffsetMinutes ).zfill(2)
-		i = i+1
-
-	return ( thisDumpsterFire )
-
-
-# ================================================================================================
-#
-# Function:
-#
-# Description:
+# Description:  Adds a relative offset time delay to wait before igniting the associated Fire.
+# Useful for building more believable event narratives with a DumpsterFire. When the previous
+# Fire in the queue finishes running, the Fire will wait HH:MM before igniting itself.
 #
 # ================================================================================================
 
@@ -413,9 +438,9 @@ def AddTimeOffsetsToFires( thisDumpsterFire ):
 
 # ================================================================================================
 #
-# Function:
+# Function:  BuildTimeOffsetForFire()
 #
-# Description:
+# Description:  Helper function for AddTimeOffsetsToFires()
 #
 # ================================================================================================
 
@@ -456,7 +481,7 @@ def BuildTimeOffsetForFire( thisFire ):
 
 	print ""
 	print "Time offset for Fire '" + thisFire.mFireName + "': ",  \
-		str( hours ).zfill( 2 ), "hours, ", str( minutes ).zfill( 2 ), "minutes"
+		str( hours ).zfill( 2 ), "hours,", str( minutes ).zfill( 2 ), "minutes"
 	print ""
 
 	thisFire.mOffsetHours = hours
@@ -468,9 +493,10 @@ def BuildTimeOffsetForFire( thisFire ):
 
 # ================================================================================================
 #
-# Function:
+# Function:  BrowseFires()
 #
-# Description:
+# Description:  Guides the user through selecting Fire Categories, prints the included
+# Fires (and their respective descriptions) for an overview.
 #
 # ================================================================================================
 
@@ -489,7 +515,7 @@ def BrowseFires():
 
 	done = 0
 
-	while ( done == 0 ):
+	while ( done == False ):
 
 		print ""
 		print "====  Select a Fire Category  ===="
@@ -501,17 +527,35 @@ def BrowseFires():
 		print "Selected Fire Category: ", fireCategory
 
 		print ""
-		print "====  Select a Fire ===="
+		PrintBannerFlames()
+
+		print "---------------------------------------------------------------------"
+		print "                 ", fireCategory, "Fire Details"
+		print "---------------------------------------------------------------------"
 		print ""
 
-		fireNum = SelectFire( fireCategory )
+		# Clear values from list to avoid duplicate crud building up
+		del gFires[ : ]
 
-		# TO DO - PULL UP FIRE MODULE INSTANCE AND CALL Description() METHOD
+		# Populate the Fire modules from the supplied Fire Category
+		for root, dirs, files in os.walk( "./FireModules/" + fireCategory ):
+			for file in files:
+				# Filter out the required __init__.py file in Fire directories
+				if ( file != kLabelDirInitFile ):
+					if file.endswith('.py'):
+						gFires.append( file )
+
+		i = 0
+
+		while i < len( gFires ):
+
+			PrintFireDetails( fireCategory, gFires[ i ] )
+			i = i + 1
 	    
 		choice = raw_input("Browse more Fires? [y/n]: ")
 
-		if choice == "n":
-			done = 1
+		if not ( choice == "y" ):
+			done = True
 
 	return 
 
@@ -519,9 +563,68 @@ def BrowseFires():
 
 # ================================================================================================
 #
-# Function:
+# Function:  PrintFireDetails()
 #
-# Description:
+# Description:  Utility function for printing the details of a Fire (name, configuration,
+# and time delays) in a friendly layout that won't make the user's eyes burn.
+#
+# ================================================================================================
+
+def PrintFireDetails( fireCategory, fireName ):
+
+	try:
+		fullFirePath = fireCategory + "/" + fireName
+
+		# Convert Fire's filepath to Python '.'-format
+		pythFormatPathStr = fullFirePath.replace( "/", "." )
+
+		# Set root path to Fire modules, strip trailing ".py" from Fire module's name
+		fireModulePathStr = "FireModules." + pythFormatPathStr[ :-3 ]
+
+		# Extract Fire name from end of converted Fire module path 
+		# Convert filepath of Fire module to Python's '.'-notation
+
+		fireModulePathElementList = fireModulePathStr.split( "." )
+		fireModuleNameStr = fireModulePathElementList[ -1 ] 
+
+	except:
+		print "### PrintFireDetails(): Error accessing Fire details for", fireModuleNameStr
+		print ""
+
+	try:
+		# Load Fire module (Python class)
+		currentFireClass = getattr( importlib.import_module( fireModulePathStr, fireModuleNameStr ), fireModuleNameStr )
+
+		# Create dummy instance of Fire so we can call its Description() method
+		thisFire = currentFireClass( "" )
+
+	except:
+		print "### PrintFireDetails(): Error loading / creating new Fire" 
+		print "Module Path:", fireModulePathStr
+		print "Fire Name:", fireModuleNameStr
+		print ""
+
+	try:
+		print "**", fireName
+		print ""
+		print "\t", thisFire.Description()
+		print ""
+
+	except:
+		print "### IgniteFire: Error while calling Fire's Description()"
+		print ""
+
+	
+	return
+
+
+
+# ================================================================================================
+#
+# Function:  StoreDumpsterFireConfig()
+#
+# Description:  Creates a JSON-format snapshot of the DumpsterFire, saves to "DumpsterFires/"
+# directory.
 #
 # ================================================================================================
 
@@ -541,6 +644,8 @@ def StoreDumpsterFireConfig( theDumpsterFire ):
 	try:
 		rawConfigList.append( theDumpsterFire.mName )
 		rawConfigList.append( theDumpsterFire.mDescription )
+		rawConfigList.append( theDumpsterFire.mLaunchDateTimeUTC.strftime("%m/%d/%Y %H:%M:00"))
+		rawConfigList.append( theDumpsterFire.mDelayLaunch )
 		rawConfigList.append( len( theDumpsterFire.mFires ))
 		
 		# Launch Date/Time are not stored in the config file - those are runtime settings
@@ -579,13 +684,14 @@ def StoreDumpsterFireConfig( theDumpsterFire ):
 
 # ================================================================================================
 #
-# Function:
+# Function:  LoadDumpsterFireConfig()
 #
-# Description:  Reads the DumpsterFire config file and assigns data to DumpsterFire members
+# Description:  Reads in the JSON-format saved DumpsterFire file, creates a new DumpsterFire
+# object and populates it with the saved values.
 #
 # ================================================================================================
 
-def LoadDumpsterFireConfig( dumpsterFireName ):
+def LoadDumpsterFireConfig( dumpsterFireFilePath ):
 
 	# Open DumpsterFire config file 
 	# Read saved JSON format and assign values to data members
@@ -594,11 +700,15 @@ def LoadDumpsterFireConfig( dumpsterFireName ):
 	rawConfigStr = []
 
 	try:
-		configFile = open( "DumpsterFires/" + dumpsterFireName, 'r' )
+		configFile = open( dumpsterFireFilePath, 'r' )
 
 	except:
-		print "Error opening config file DumpsterFires/" + dumpsterFireName
+		print "Error opening config file " + dumpsterFireName
 		print ""
+
+	# Some ugly brittleness ahead - hardcoded indexing of fields. Won't cause any
+	# problems unless you start modifying the number of fields that are stored
+	# when saving/loading DumpsterFires
 
 	try:
 		# Load raw config strings into list, assign them to DumpsterFire members
@@ -606,8 +716,11 @@ def LoadDumpsterFireConfig( dumpsterFireName ):
 
 		newDumpsterFire.mName = rawConfigStr[ 0 ]
 		newDumpsterFire.mDescription = rawConfigStr[ 1 ]
+		newDumpsterFire.mLaunchDateTimeUTC = datetime.datetime.strptime( rawConfigStr[ 2 ], "%m/%d/%Y %H:%M:%S" )
+		newDumpsterFire.mDelayLaunch = rawConfigStr[ 3 ]
 
-		fireCount = rawConfigStr[ 2 ]
+
+		fireCount = rawConfigStr[ 4 ]
 
 		i = 0
 
@@ -617,10 +730,10 @@ def LoadDumpsterFireConfig( dumpsterFireName ):
 
 			offset = i * 4
 
-			newDumpsterFire.mFires[ i ].mFireName = rawConfigStr[ offset + 3 ]
-			newDumpsterFire.mFires[ i ].mOffsetHours = rawConfigStr[ offset + 4 ]
-			newDumpsterFire.mFires[ i ].mOffsetMinutes = rawConfigStr[ offset + 5 ]
-			newDumpsterFire.mFires[ i ].mConfigStr = rawConfigStr[ offset + 6 ]
+			newDumpsterFire.mFires[ i ].mFireName = rawConfigStr[ offset + 5 ]
+			newDumpsterFire.mFires[ i ].mOffsetHours = rawConfigStr[ offset + 6 ]
+			newDumpsterFire.mFires[ i ].mOffsetMinutes = rawConfigStr[ offset + 7 ]
+			newDumpsterFire.mFires[ i ].mConfigStr = rawConfigStr[ offset + 8 ]
 
 			i = i + 1
 
@@ -641,16 +754,14 @@ def LoadDumpsterFireConfig( dumpsterFireName ):
 
 # ================================================================================================
 #
-# Function:
+# Function:  SaveDumpsterFire()
 #
-# Description:
+# Description:  Helper function for storing DumpsterFires via StoreDumpsterFireConfig(). 
+# First prints out the details so the user gets an overview of what they're storing.
 #
 # ================================================================================================
 
 def SaveDumpsterFire( newDumpsterFire ):
-
-	print ""
-	newDumpsterFire.mName = raw_input( "Enter name for new Dumpster Fire: " )
 
 	print ""
 	newDumpsterFire.mDescription = raw_input( "Enter description of new Dumpster Fire: " )
@@ -673,9 +784,9 @@ def SaveDumpsterFire( newDumpsterFire ):
 
 # ================================================================================================
 #
-# Function:
+# Function:  PrintDumpsterFireConfig()
 #
-# Description:
+# Description:  Helper function, prints the DumpsterFire's configuration in a nice format.
 #
 # ================================================================================================
 
@@ -687,20 +798,20 @@ def PrintDumpsterFireConfig( thisDumpsterFire ):
 	print "\t", kLabelDumpsterFireName, thisDumpsterFire.mName
 	print "\t", kLabelDumpsterFireDescription, thisDumpsterFire.mDescription
 
-	if ( thisDumpsterFire.mDelayLaunch == 0 ):
+	if ( thisDumpsterFire.mDelayLaunch == False ):
 		print "\t", kLabelDelayedIgnition, "No"
 
 	else:
 		print "\t", kLabelDelayedIgnition, "Yes"
-		print "\t", kLabelDelayedIgnitionStart, thisDumpsterFire.mLaunchDateTimeLocal.strftime("%x %X")
 		print "\t", kLabelDelayedIgnitionStartUTC, thisDumpsterFire.mLaunchDateTimeUTC.strftime("%x %X")
 
 	print ""
-	print "\tFires (In order of execution, plus relative time offset HH:MM):"
+	print "\tFires (In order of execution):"
 	print ""
 
 	while ( i < len( thisDumpsterFire.mFires )):
-		print "\t** ", thisDumpsterFire.mFires[ i ].mFireName + ", Time Offset: ",  \
+		print "\t** ", thisDumpsterFire.mFires[ i ].mFireName
+		print "\t    Relative Time Delay (HH:MM): ",  \
 			str( thisDumpsterFire.mFires[ i ].mOffsetHours ).zfill(2) + ":" +  \
 			str( thisDumpsterFire.mFires[ i ].mOffsetMinutes ).zfill(2)
 		print "\t    Config: " + thisDumpsterFire.mFires[ i ].mConfigStr
@@ -712,14 +823,16 @@ def PrintDumpsterFireConfig( thisDumpsterFire ):
 
 # ================================================================================================
 #
-# Function:
+# Function:  IgniteDumpsterFire()
 #
-# Description:
+# Description:  Where the good stuff happens.
 #
 # If DumpsterFire has fuse delay, loop and wait until triggered
 # Loop over Fires in thisDumpsterFire
+# For each Fire
 # 	Parse each Fire name into FireModulePath and FireName
-#		Replace '/' with '.' in path
+#		Convert FireModulePath + FireName into Python package format
+#			(Replace '/' with '.' in path)
 #		Copy fireName from last field of FireModulePath
 #	Load Fire module
 #	Set Configs for Fire
@@ -729,22 +842,25 @@ def PrintDumpsterFireConfig( thisDumpsterFire ):
 #
 # ================================================================================================
 
-def IgniteDumpsterFire( thisDumpsterFire, startFireAtDT ):
+def IgniteDumpsterFire( thisDumpsterFire, withUserInteraction ):
 
 	i = 0
 
-	# DEBUG DEBUG DEBUG
-	thisDumpsterFire.mLaunchDateTimeUTC = datetime.datetime.utcnow()
-
 	# If this DumpsterFire has delayed ignition, loop and wait until triggered
-	if ( thisDumpsterFire.mDelayLaunch > 0 ):
+	if ( thisDumpsterFire.mDelayLaunch == True ):
 
-		print "Delayed ignition selected. Standing by until UTC ", 
+		print "Delayed ignition selected. Standing by until UTC", 
 		print thisDumpsterFire.mLaunchDateTimeUTC.strftime("%x %X")
 		print ""
-		print "(Waiting...)"
+	
+		waitTime = thisDumpsterFire.mLaunchDateTimeUTC - datetime.datetime.utcnow()
+
+		if ( waitTime.total_seconds() > 1 ):
+
+			time.sleep( waitTime.total_seconds() )
+
 		
-	print "Igniting Dumpster Fire...\n"
+	print "Igniting Dumpster Fire..."
 
 	# Loop through the member Fires of the DumpsterFire, igniting them in turn
 
@@ -752,19 +868,24 @@ def IgniteDumpsterFire( thisDumpsterFire, startFireAtDT ):
 
 		currentFire = thisDumpsterFire.mFires[ i ]
 
-		currentUTC = datetime.datetime.utcnow()
-
+		print ""
 		print "---------------------------------------------------------"
-		print "UTC: " + currentUTC.strftime("%x %X")
+		PrintDateTimeStamps()
 		print ""
 
 		# If this Fire has a relative delayed ignition, loop and wait until triggered
 		if ( currentFire.mOffsetHours > 0 or currentFire.mOffsetMinutes > 0 ):
 
-			print "Delayed ignition detected. Pausing for (HH:MM)", \
+			print "Delayed Fire ignition detected. Pausing for (HH:MM)", \
 				str( currentFire.mOffsetHours ).zfill(2) + ":" +  \
 				str( currentFire.mOffsetMinutes ).zfill(2)
 			print "(Waiting...)"
+			
+			delaySeconds = ( int(currentFire.mOffsetMinutes) * 60 ) + ( int(currentFire.mOffsetHours) * 60 * 60 )
+
+			time.sleep( delaySeconds )
+			print ""
+			PrintDateTimeStamps()
 			print ""
 
 		print "Igniting Fire: ", currentFire.mFireName
@@ -782,14 +903,12 @@ def IgniteDumpsterFire( thisDumpsterFire, startFireAtDT ):
 		fireModuleNameStr = fireModulePathElementList[ -1 ] 
 
 		# Time to ignite the current Fire...
-		IgniteFire( fireModulePathStr , fireModuleNameStr, currentFire.mConfigStr )
+		IgniteFire( fireModulePathStr, fireModuleNameStr, currentFire.mConfigStr )
 
 		i = i+1
 
-	currentUTC = datetime.datetime.utcnow()
-
 	print "---------------------------------------------------------"
-	print "UTC: " + currentUTC.strftime("%x %X")
+	PrintDateTimeStamps()
 	print ""
 	print "All Fires burned. DumpsterFire complete."
 	print ""
@@ -800,9 +919,9 @@ def IgniteDumpsterFire( thisDumpsterFire, startFireAtDT ):
 
 # ================================================================================================
 #
-# Function:
+# Function:  StartDumpsterFire()
 #
-# Description:
+# Description: Sets up all of the housekeeping needed to ignite the DumpsterFire.
 #
 # ================================================================================================
 
@@ -828,7 +947,10 @@ def StartDumpsterFire():
 
 	selection = SelectDumpsterFire()
 
-	hotDumpsterFire = LoadDumpsterFireConfig( gDumpsterFires[ selection ] )
+	if ( selection < 0 ):
+		return
+
+	hotDumpsterFire = LoadDumpsterFireConfig( kDumpsterFireDirectory + gDumpsterFires[ selection ] )
 
 	print ""
 	print ""
@@ -836,18 +958,34 @@ def StartDumpsterFire():
 	print "====  Select Timing of Fire  ===="
 	print ""
 
-	choice = raw_input( "Add time-delay to dumpster fire? [y/n]: ")
-	print ""
-
-	startFireAtDT_UTC = datetime.datetime.utcnow()
+	# DEBUG DEBUG DEBUG
+	fuseDelayStr = hotDumpsterFire.mLaunchDateTimeUTC.strftime("%x %X")
 	currentDT_UTC = datetime.datetime.utcnow()
+
+	waitTime = hotDumpsterFire.mLaunchDateTimeUTC - datetime.datetime.utcnow()
+
+	if ( waitTime.total_seconds() < 1 ):
+		fuseDelayStr = "None (immediate ignition)"
+
+	print "DumpsterFire Time Delay (UTC):", fuseDelayStr
+	print "Current Time (UTC):", currentDT_UTC.strftime("%x %X")
+
+	fuseDelayStr = hotDumpsterFire.mLaunchDateTimeUTC.strftime("%x %X")
+
+	print ""
+	choice = raw_input( "Create new time-delay for dumpster fire? [y/n]: ")
+	print ""
 
 	if choice == "y":
 		
-		startFireAtDT_UTC = BuildDateTime()
-		fuseDelay = startFireAtDT_UTC.strftime("%x %X")
-	else:
-		fuseDelay = "Immediately"
+		hotDumpsterFire.mLaunchDateTimeUTC = BuildDateTime()
+		fuseDelayStr = hotDumpsterFire.mLaunchDateTimeUTC.strftime("%x %X")
+		hotDumpsterFire.mDelayLaunch = True
+
+	elif ( waitTime.total_seconds() < 1 ):
+
+		fuseDelayStr = "None (immediate ignition)"
+		hotDumpsterFire.mDelayLaunch = False
 
 	print ""
 	print "---------------------------------------------------"
@@ -858,8 +996,10 @@ def StartDumpsterFire():
 
 	PrintDumpsterFireConfig( hotDumpsterFire )
 
+	currentDT_UTC = datetime.datetime.utcnow()
+
 	print ""
-	print "Fire will start: ", fuseDelay, " - Current Date/Time (UTC) =", currentDT_UTC.strftime("%x %X") 
+	print "Fire will start (UTC): ", fuseDelayStr, " - Current Date/Time (UTC) =", currentDT_UTC.strftime("%x %X") 
 	print ""
 
 	choice = raw_input( "Ignite Dumpster Fire? [y/n]: ")
@@ -875,7 +1015,7 @@ def StartDumpsterFire():
 			print "  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 			print ""
 
-			IgniteDumpsterFire( hotDumpsterFire , startFireAtDT_UTC )
+			IgniteDumpsterFire( hotDumpsterFire, True )
 
 		except:
 			print ""
@@ -894,13 +1034,16 @@ def StartDumpsterFire():
 
 	choice = raw_input( "Press return to continue... " )
 
+	return
+
 
 
 # ================================================================================================
 #
-# Function:
+# Function:  SelectFireCategory()
 #
-# Description:
+# Description:  Guides user through selecting Fire Categories while building a new DumpsterFire.
+# Also used for browsing entire Fire Categories.
 #
 # ================================================================================================
 
@@ -934,9 +1077,9 @@ def SelectFireCategory():
 
 # ================================================================================================
 #
-# Function:
+# Function:  SelectFire()
 #
-# Description:
+# Description:  Guides user through selecting Fires while building a new DumpsterFire.
 #
 # ================================================================================================
 
@@ -950,10 +1093,9 @@ def SelectFire( fireCategory ):
 		for file in files:
 			# Filter out the required __init__.py file in Fire directories
 			if ( file != kLabelDirInitFile ):
-				# Filter out any compiled Python files that have popped up
-				if not ( ".pyc" in file ):
-					if not ( ".swp" in file ):
-						gFires.append( file )
+				# Filter out any non-Python source files
+				if file.endswith('.py'):
+					gFires.append( file )
 
 	print "Available", fireCategory, "Fires:"
 	print ""
@@ -981,11 +1123,34 @@ def SelectFire( fireCategory ):
 	return selection
 
 
+
 # ================================================================================================
 #
-# Function:
+# Function:  PrintDateTimeStamps()
 #
-# Description:
+# Description:  Utility function for printing out the current time in UTC 
+#
+# ================================================================================================
+
+def PrintDateTimeStamps():
+
+	currentUTC = datetime.datetime.utcnow()
+	print "UTC: " + currentUTC.strftime("%x %X") + "  / ",
+	print time.strftime("%Z: %x %X", time.localtime(time.time()))
+
+	return
+
+
+
+# ================================================================================================
+#
+# Function:  BuildDateTime()
+#
+# Description:  Guides the user through building a valid Date/Time. I use separate variables for
+# each element because it avoids all user-input formatting mistakes, confusion, etc.
+#
+# NOTE: Does not yet handle Feb. 29th on leap years. Consider it a day off. Or go to immediate
+# ignition if you really want to light up that rare day.
 #
 # ================================================================================================
 
@@ -995,7 +1160,13 @@ def BuildDateTime():
 	month = 0
 	day = 0
 	done = 0
-	fireStartTime = datetime.datetime.now()
+	fireStartTime = datetime.datetime.utcnow()
+
+	print "Current Date/Time --",
+	PrintDateTimeStamps()
+	print ""
+	print "MUST ENTER DATE/TIME IN UTC (see current UTC above for reference)"
+	print ""
 
 	while ( done == 0 ):
                 try:
@@ -1104,7 +1275,7 @@ def BuildDateTime():
 				if ( year == fireStartTime.year and  \
 					month == fireStartTime.month and  \
 					day == fireStartTime.day and  \
-					fireStartTime.hour < hour ):
+					hour < fireStartTime.hour ):
 
 					choice = raw_input("You're about to hack time, are you sure? [y/n]: ")	
 
@@ -1129,8 +1300,8 @@ def BuildDateTime():
 				if ( year == fireStartTime.year and  \
 					month == fireStartTime.month and  \
 					day == fireStartTime.day and  \
-					fireStartTime.hour == hour and  \
-					fireStartTime.minute < minute ):
+					hour == fireStartTime.hour and  \
+					minute < fireStartTime.minute ):
 
 					choice = raw_input("You're about to hack time, are you sure? [y/n]: ")	
 
@@ -1149,9 +1320,10 @@ def BuildDateTime():
 
 # ================================================================================================
 #
-# Function:
+# Function:  SelectDumpsterFire()
 #
-# Description:
+# Description:  Loads up the list of DumpsterFires stored in the "DumpsterFire/" directory,
+# guides the user through selecting one. If no DumpsterFires are found, let them know. 
 #
 # ================================================================================================
 
@@ -1161,11 +1333,22 @@ def SelectDumpsterFire():
 	del gDumpsterFires[ : ]
 
 	# Populate the DumpsterFires list with .fyr files in DumpsterFires/ directory
-	for root, dirs, files in os.walk( "./DumpsterFires/" ):
+	for root, dirs, files in os.walk( kDumpsterFireDirectory  ):
 		for file in files:
-			if ( ".fyr" in file ):
-				if not ( ".swp" in file ):
-					gDumpsterFires.append( file )
+			if file.endswith('.fyr'):
+				gDumpsterFires.append( file )
+
+	selection = -1
+
+	# If empty list, exit
+
+	if ( len( gDumpsterFires ) == 0 ):
+		print ""
+		print "No DumpsterFires found in", kDumpsterFireDirectory, "directory"
+		print ""
+		choice = raw_input( "Press return to continue... " )
+
+		return( selection )
 
 	print "Available DumpsterFires:"
 	print ""
@@ -1178,8 +1361,6 @@ def SelectDumpsterFire():
 
 	print ""
 
-	selection = -1
-
 	while ( selection < 0 or selection > ( dumpsterfireCount - 2 )):
 		try:
 			dumpsterfireNum = raw_input( "Enter DumpsterFire #: " )
@@ -1189,7 +1370,7 @@ def SelectDumpsterFire():
 			if ( dumpsterfireNum == "" or selection < 0 or selection > (dumpsterfireCount - 1)):
 				print "Invalid DumpsterFire selection, try again..."
 				selection = -1
-	
+
 		except ValueError:
 			print "Invalid DumpsterFire selection, try again..."
 	print ""
@@ -1204,9 +1385,9 @@ def SelectDumpsterFire():
 
 # ================================================================================================
 #
-# Function:
+# Function:  BrowseDumpsterFires()
 #
-# Description:
+# Description:  Yep, that about sums it up.
 #
 # ================================================================================================
 
@@ -1225,24 +1406,77 @@ def BrowseDumpsterFires():
 
 	selection = SelectDumpsterFire()
 
-	thisDumpsterFire = LoadDumpsterFireConfig( gDumpsterFires[ selection ] )
+	if ( selection > -1 ):
 
-	PrintDumpsterFireConfig( thisDumpsterFire )
+		thisDumpsterFire = LoadDumpsterFireConfig( kDumpsterFireDirectory + gDumpsterFires[ selection ] )
 
-	# Free up the allocated space or gets mucked up from repeated calls to this method
-	del thisDumpsterFire.mFires[ : ]
-	del thisDumpsterFire
+		PrintDumpsterFireConfig( thisDumpsterFire )
+
+		# Free up the allocated space or gets mucked up from repeated calls to this method
+		del thisDumpsterFire.mFires[ : ]
+		del thisDumpsterFire
+
+		print ""
+		choice = raw_input( "Press return to continue... " )
+
+	return
+
+
+# ================================================================================================
+#
+# Function:  DeleteDumpsterFire()
+#
+# Description:  Because sometimes even DumpsterFires need to be thinned out.
+#
+# ================================================================================================
+
+def DeleteDumpsterFire():
+
+	PrintBannerFlames()
+
+	print "---------------------------------------------------------------------"
+	print "=====================   DELETE DUMPSTER FIRE    ====================="
+	print "---------------------------------------------------------------------"
+	print ""
+	print "Select a Dumpster Fire to delete."
+	print ""
+
+	selection = SelectDumpsterFire()
+
+	if ( selection > -1 ):
+
+		thisDumpsterFire = LoadDumpsterFireConfig( kDumpsterFireDirectory + gDumpsterFires[ selection ] )
+
+		PrintDumpsterFireConfig( thisDumpsterFire )
+
+		print ""
+		choice = raw_input( "Delete this DumpsterFire? (y/n): " )
+
+		if choice == "y":
+			try:
+				os.remove( kDumpsterFireDirectory + gDumpsterFires[ selection ] )
+				print ""
+				print "DumpsterFire deleted."
+			except:
+				print ""
+				print "## Error deleting DumpsterFire"
+
+		# Free up the allocated space or gets mucked up from repeated calls to this method
+		del thisDumpsterFire.mFires[ : ]
+		del thisDumpsterFire
 
 	print ""
 	choice = raw_input( "Press return to continue... " )
+
+	return
 
 
 
 # ================================================================================================
 #
-# Function:
+# Function:  Help()
 #
-# Description:
+# Description:  Well this went meta fast...
 #
 # ================================================================================================
 
@@ -1295,37 +1529,15 @@ def About():
 	print ""
 	choice = raw_input( "Press return to continue... " )
 
+	return
+
 	
 
 # ================================================================================================
 #
-# Function:
+# Function:  IgniteFire()
 #
-# Description:
-#
-# ================================================================================================
-
-def TheDebugZone():
-
-	print ""
-	print "-----------##########  DEBUG  ###########"
-	print ""
-	print "OOOOOOOOH YEAH! GONNA SUMMON THE COWGODS!"
-	print ""
-
-	print ""
-	print "-----------########  END DEBUG  #########"
-	print ""
-
-	return
-
-
-
-# ================================================================================================
-#
-# Function:
-#
-# Description:
+# Description:  Loads the Fire class from its package, sets its parameters, lights it up!
 #
 # ================================================================================================
 
@@ -1345,6 +1557,10 @@ def IgniteFire( modulePath, fireName, params ):
 
 	try:
 		thisFire.SetParameters( params )
+
+		# A little visual spacing for better readability of large DumpsterFire outputs
+		print""
+
 		thisFire.Ignite() 
 
 	except:
@@ -1356,43 +1572,9 @@ def IgniteFire( modulePath, fireName, params ):
 
 # ================================================================================================
 #
-# Function:
+# Function:  MainMenu()
 #
-# Description:
-#
-# ================================================================================================
-
-def DebugTestFireTemplateMethods( modulePath, fireName, params ):
-
-	print ""
-	print "### DebugTestFireTemplateMethods()"
-	print ""
-	print "Module Path:", modulePath
-	print "Fire Name:", fireName
-
-	currentFireClass = getattr( importlib.import_module( modulePath, fireName ), fireName )
-
-	thisFire = currentFireClass( params )
-
-	print "\t" + thisFire.moofStr
-
-	thisFire.Configure() 
-	print ""
-	print "\t Description: ", thisFire.Description() 
-	print ""
-	thisFire.GetParameters() 
-	thisFire.SetParameters( params ) 
-	thisFire.ActivateLogging( True )  
-	thisFire.Ignite() 
-
-	return
-
-
-# ================================================================================================
-#
-# Function:
-#
-# Description:
+# Description:  No one will ever guess what this function does. Let's keep it our little secret.
 #
 # ================================================================================================
 
@@ -1430,8 +1612,9 @@ def MainMenu():
 		print "3) Ignite a Dumpster Fire"
 		print "4) Browse Dumpster Fires"
 		print "5) Browse Fires"
-		print "6) Help / Basic Usage"
-		print "7) Exit"
+		print "6) Delete Dumpster Fire"
+		print "7) Help / Basic Usage"
+		print "8) Exit"
 		print ""
 	
 		invalidSelection = 1
@@ -1440,7 +1623,7 @@ def MainMenu():
 			try:
 				choice = int( raw_input( "Selection: " ))
 	
-				if ( choice > 0 and choice < 8 ):
+				if ( choice > 0 and choice < 9 ):
 					invalidSelection = 0
 				else:
 					print selectionErrorMsg
@@ -1459,8 +1642,10 @@ def MainMenu():
 		elif choice == 5:
 			BrowseFires()
 		elif choice == 6:
-			Help()
+			DeleteDumpsterFire()
 		elif choice == 7:
+			Help()
+		elif choice == 8:
 			notDone = 0
 		else:
 			print selectionErrorMsg
@@ -1471,6 +1656,13 @@ def MainMenu():
 	print random.choice( byeArray )
 	print ""
 
-# ==============================  Main Loop  ================================
-#
-MainMenu()
+## ==============================  Main Loop  ================================
+
+def main():
+
+	MainMenu()
+	return
+
+if __name__ == "__main__":
+	main()
+
