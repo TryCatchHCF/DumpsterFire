@@ -75,7 +75,7 @@ As the DumpsterFire executes, you'll be given regular date-time stamped feedback
 
 **testFireModule.py** - Utility script for unit testing the Class methods of your custom Fire modules, without the hassle of running through the entire DumpsterFire Factory process to debug.
 
-**"&#95;&#95;init&#95;&#95;.py"** files - Required to make Python treat directories as containing Python packages, allows DumpsterFire toolset to find and load Fire modules.
+**&#95;&#95;init&#95;&#95;.py** files - Required to make Python treat directories as containing Python packages, allows DumpsterFire toolset to find and load Fire modules.
 
 # Requires
 Python 2.7.x
@@ -98,7 +98,7 @@ Without creating any new FireModule classes, you can use these existing "custom"
 
 You can add any number of these to your DumpsterFire, each with its own custom actions. For example, you could chain together a dozen 'custom_url.py' Fire modules to build a complete, tailored browsing narrative. You could then have various 'OSCommand/' Fire instances that execute system commands to further reinforce your desired narrative of events. The 'OSCommand/' Fires in particular give you incredible flexbility. Each individual Fire in your DumpsterFire event chain takes any shell commands that are appropriate for the host's OS:
 
-Linux/Unix:
+Linux/Unix (& OSX terminal):
 
 find /home -name '*.bash_history' -exec cat {} \; ; echo "Never gonna give you up\!" > rickroll.txt ; wall rickroll.txt
 
