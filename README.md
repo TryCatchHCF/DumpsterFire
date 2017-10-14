@@ -123,7 +123,9 @@ The menu-driven DumpsterFire Factory script guides you through each step, with c
 
 # Sample DumpsterFires
 
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire1.png></img>
+In our first example, we have a DumpsterFire that could be either a SOC drill or a Red Team distraction. 
+
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire_Wayward_Employee.png></img>
 <img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire.png></img>
 
 # Write Your Own Custom Fire Modules
