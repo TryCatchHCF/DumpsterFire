@@ -8,44 +8,32 @@
 #
 # Summary:
 #
+#	Utility script for debugging Fire modules. Executes each member method
+#	of the target Fire class, giving direct visibility into its operations
+#	prior to using it in dumpsterFireFactory's menu-driven environment.
 #
 # Description:
 #
+#	The script takes two arguments - the full filepath of the Fire (in
+#	Python package format - see example below), and the name of the Fire
+#	class (note the lack of the .py suffix).
 #
 # Example:
 #
-#   $ ./testFireModule.py <FireModuleName.py>
+#   $ ./testFireModule.py FireModules.Websurfing.warez_sites warez_sites
 #
 
-import os, sys, getopt, datetime, random, importlib, json
-
-# DEBUG DEBUG DEBUG - Replace with proper inclusion of classes so we don't
-# have hardcoded duplicate class declarations
-
-class FireNode:
-        mFireName = ""
-        mOffsetHours = 0
-        mOffsetMinutes = 0
-        mConfigStr = ""
-
-
-class DumpsterFire:
-        mName = ""
-        mDescription = ""
-        mFires = []      # List of FireNodes
-        mDelayLaunch = 0
-        mLaunchDateTimeUTC = datetime.datetime.utcnow() # If delayed launch selected, use this
-        # FLAWED - CHANGE TO DERIVE LOCAL TIME DIRECTLY FROM mLaunchDateTimeUTC TO AVOID EDGE CASES
-        mLaunchDateTimeLocal = datetime.datetime.now()  # If delayed launch selected, use this
-
+import os, sys, getopt, datetime, random, importlib, json, dumpsterFireFactory
 
 
 
 # ================================================================================================
 #
-# Function:
+# Function:  DebugTestFireTemplateMethods()
 #
-# Description:
+# Description:  Loads the Fire class from the module path (in Python package format)
+# then calls each of the Fire's member methods. Does not use any exception handling
+# so that you can see the direct location and cause of any errors.
 #
 # ================================================================================================
 
