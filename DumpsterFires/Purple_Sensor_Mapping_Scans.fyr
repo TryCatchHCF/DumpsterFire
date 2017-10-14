@@ -1,1 +1,1 @@
- 
+["Purple_Sensor_Mapping_Scans", "Executes a series of network scans of various collections of ports, at varying rates, to map sensor response", "10/14/2017 04:32:00", false, 5, "NetworkScans/nmap_subnet_top_1000_and_probes.py", 0, 5, "10.1.0.1", "NetworkScans/nmap_subnet_smb_probes.py", 0, 5, "10.1.0.1", "NetworkScans/nmap_subnet_webserver_probes.py", 0, 5, "10.1.0.1", "NetworkScans/nmap_subnet_rdp_vnc.py", 0, 5, "10.1.0.1", "NetworkScans/nmap_subnet_top_80_quiet.py", 0, 5, "10.1.0.1"]
