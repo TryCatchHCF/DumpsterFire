@@ -63,7 +63,7 @@ As the DumpsterFire executes, you'll be given regular date-time stamped feedback
 
 **DumpsterFires/** - Directory containing your collection of DumpsterFires
 
-**igniteDumpsterFire.py** - Headless script, invoked at command line with the local filepath of the DumpsterFire you wish to execute. Useful for igniting distributed DumpsterFires.
+**igniteDumpsterFire.py** - Headless script, invoked at command line with the filename of the DumpsterFire you wish to execute. Useful for igniting distributed DumpsterFires.
 
 **testFireModule.py** - Utility script for unit testing the Class methods of your custom Fire modules, without the hassle of running through the entire DumpsterFire Factory process to debug.
 
