@@ -26,13 +26,7 @@ Wish you could support a Red Team engagement against a remote team that’s 7 ti
 
 Ever wanted to simultaneously rickroll all of your opponents’ systems during your annual cyberwarfare exercise? "Never gonna give you up!"
 
-Here's a "Wayward Employee" DumpsterFire (included with the project). In this scenario, someone on your network takes an interest in hacking and chooses your network as their playground.
-
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/WaywardEmployeeExample.png></img>
-
-And here's a "This Is Fine" Distraction DumpsterFire (also included with the project). This DumpsterFire is date-time triggered, and could be copied and executed across multiple networks, generating network scans, brute-force credential attacks, and other activities to distract response teams.
-
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DistractionExample.png></img>
+See sample DumpsterFires below.
 
 # Accountability
 
@@ -123,7 +117,7 @@ The menu-driven DumpsterFire Factory script guides you through each step, with c
 
 # Sample DumpsterFires
 
-In our first example, we have a DumpsterFire that could be either a SOC drill or a Red Team distraction. The DumpsterFire first does a Google search for hacking tools. The next Fire opens Web sessions to various hacking Websites. Next, a following Fire downloads some common hacking tools. Then a port scan targets the subnetwork, followed by bruteforce login attempts against a single host via Telnet. The final Fire runs a series of Linux commands. Note that between each fire, the creator of this DumpsterFire has inserted some time delays. This makes the flow of events appear more realistic.
+In our first example, we have a DumpsterFire that could be either a SOC drill or a Red Team distraction. The DumpsterFire first does a Google search for hacking tools. The next Fire opens Web sessions to various hacking Websites. Next, a following Fire downloads some common hacking tools. Then a port scan targets the subnetwork, followed by bruteforce login attempts against a single host via Telnet. The final Fire runs a series of Linux commands. Note that between each Fire, the creator of this DumpsterFire has inserted some time delays. This makes the flow of events appear more realistic.
 
 <img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire_Wayward_Employee.png></img>
 
@@ -158,8 +152,5 @@ Your Fire module inherits from a class called FireModule. Copy the Fire module t
 
 Testing Python classes can be annoying, especially when you want to unit test each of the class's methods, forcing you to slog through all the application's use cases to make sure each class method is executed in proper order. Bleh. So I've written and included a script that will properly invoke each method of your new FireModule-derived classes, enabling you to quickly churn-and-burn your way through debugging. You're welcome. :-)
 
-At the command line, give the 'testFireModule.py' script the relative filepath to your custom Fire module. The test script will call each of the required FireModule methods for you, in proper sequence (getting configuration prior to saving, etc.). The test script doesn't use exception handling, because Python only gives you useful errors (like pointing out that missing double-quote) when it crashes. Crash and burn your way to a successful custom Fire!
+At the command line, give the **testFireModule.py** script the relative filepath to your custom Fire module. The test script will call each of the required FireModule methods for you, in proper sequence (getting configuration prior to saving, etc.). The test script doesn't use exception handling, because Python only gives you useful errors (like pointing out that missing double-quote) when it crashes. Crash and burn your way to a successful custom Fire!
 
-# testFireModule.py Example
-
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/testFireModule.png></img>
