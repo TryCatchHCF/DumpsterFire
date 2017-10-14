@@ -889,7 +889,10 @@ def IgniteDumpsterFire( thisDumpsterFire, withUserInteraction ):
 			print ""
 
 		print "Igniting Fire: ", currentFire.mFireName
-		print "Using ConfigStr: ", currentFire.mConfigStr
+		if ( currentFire.mConfigStr == "" ):
+			print "Using ConfigStr: (None)"
+		else:
+			print "Using ConfigStr: ", currentFire.mConfigStr
 
 		# Convert Fire's filepath to Python '.'-format
 		pythFormatPathStr = currentFire.mFireName.replace( "/", "." )
@@ -1557,10 +1560,6 @@ def IgniteFire( modulePath, fireName, params ):
 
 	try:
 		thisFire.SetParameters( params )
-
-		# A little visual spacing for better readability of large DumpsterFire outputs
-		print""
-
 		thisFire.Ignite() 
 
 	except:
