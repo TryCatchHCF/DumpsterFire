@@ -43,7 +43,7 @@ For a quick start on DumpsterFire, see the cleverly titled file "README_GETTING_
 
 # Overview
 
-The DumpsterFire toolset workflow is designed to be user-friendly and robust. Everything can be done from within the menu-driven 'dumpsterFireFactory.py' script. Launch the script and the tool will guide you as you go. You can start by browsing the existing Fire modules and saved DumpsterFires. When you're ready to create your own DumpsterFires, the tool will lead through the workflow to get the job done. Finally it will be time to ignite your DumpsterFire. After selecting the DumpsterFire of your choice, you'll review the DumpsterFire's Fire modules and settings. If everything looks good, light it up!
+The DumpsterFire toolset workflow is designed to be user-friendly and robust. Everything can be done from within the menu-driven **dumpsterFireFactory.py** script. Launch the script and the tool will guide you as you go. You can start by browsing the existing Fire modules and saved DumpsterFires. When you're ready to create your own DumpsterFires, the tool will lead through the workflow to get the job done. Finally it will be time to ignite your DumpsterFire. After selecting the DumpsterFire of your choice, you'll review the DumpsterFire's Fire modules and settings. If everything looks good, light it up!
 
 When you're building a DumpsterFire, after you've chosen all of the Fire modules you wish to include, the tool will loop through the list of Fires. If a Fire has options for custom settings, the tool will call that Fire's Configure() method to present you with prompts for its settings (e.g. a target network's IP address).
 
@@ -131,8 +131,7 @@ DumpsterFire is ready to use out of the box, but it's real value is in how easil
 
 Want to keep your custom Fire modules completely separate in their own Category? Easy! Just create a new directory under FireModules/ and the DumpsterFire toolset will auto-detect and make it available as a new Category of Fires.
 
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/CategoriesBefore.png></img>
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/CategoriesAfter.png></img>
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire_Custom_Categories.png></img>
 
 Your Fire module inherits from a class called FireModule. Copy the Fire module template from the Examples/ directory and implement the following class methods:
 
