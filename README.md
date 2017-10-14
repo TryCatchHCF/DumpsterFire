@@ -69,7 +69,7 @@ As the DumpsterFire executes, you'll be given regular date-time stamped feedback
 
 **&#95;&#95;init&#95;&#95;.py** files - Required to make Python treat directories as containing Python packages, allows DumpsterFire toolset to find and load Fire modules.
 
-# Requires
+# Requirements
 Python 2.7.x
 
 # Run DumpsterFire Factory
