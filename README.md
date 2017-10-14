@@ -123,10 +123,13 @@ The menu-driven DumpsterFire Factory script guides you through each step, with c
 
 # Sample DumpsterFires
 
-In our first example, we have a DumpsterFire that could be either a SOC drill or a Red Team distraction. 
+In our first example, we have a DumpsterFire that could be either a SOC drill or a Red Team distraction. The DumpsterFire first does a Google search for hacking tools. The next Fire opens Web sessions to various hacking Websites. Next, a following Fire downloads some common hacking tools. Then a port scan targets the subnetwork, followed by bruteforce login attempts against a single host via Telnet. The final Fire runs a series of Linux commands. Note that between each fire, the creator of this DumpsterFire has inserted some time delays. This makes the flow of events appear more realistic.
 
 <img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire_Wayward_Employee.png></img>
-<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire.png></img>
+
+In the next example, Purple Teamers have created a DumpsterFire to run a choreographed series of port scans, each targeting different collections of ports & services, with varying probe rates as well. They've inserted a 5 minute delay between each scanning Fire to simplify isolating the traffic associated with each scanning Fire. When they run this DumpsterFire, they'll also see date-timestamps at the beginning of each Fire to help them deconflict the Fire's network activity vs. other network events.
+
+<img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire_Purple_Team.png></img>
 
 # Write Your Own Custom Fire Modules
 
