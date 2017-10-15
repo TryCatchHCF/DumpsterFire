@@ -55,6 +55,10 @@ When you're ready to ignite a DumpsterFire, the tool will first show you the Dum
 
 As the DumpsterFire executes, you'll be given regular date-time stamped feedback on each Fire's status and critical events. This not only helps you track progress, but also provides a chronological record of your DumpsterFire's activities - critical in coordinating and deconflicting your events from the general background noise that floods every SOC. You can also hand over the chronological record to your external clients after your operations are complete, as a value-added record of your activites that they can use to review their sensor and alert settings. All with no extra effort on your part.
 
+# Shenanigans
+
+Some situations, like cyber wargames or your best friend's birthday, call for a little extra something. Finally infiltrate your opponent's perimeter in that 'net wars event? Celebrate with Shenanigans while locking in your victory! Best friend leave their screen unlocked on game night? Sharing is caring! From rickrolling to shell pranks, DumpsterFire's Shenanigans let you add some flavor to your operation. 
+
 # Files & Directories
 
 **dumpsterFireFactory.py** - Menu-driven tool for creating, configuring, scheduling, and executing DumpsterFires
