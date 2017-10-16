@@ -8,6 +8,8 @@
 #
 # Summary:  Attempts to connect to various pornography sites. Useful for testing network filters & alerts.
 #
+#	Part of the DumpsterFire Toolset. See documentation at https://github.com/TryCatchHCF/DumpsterFire
+#
 #
 # Description:
 #
