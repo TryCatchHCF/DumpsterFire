@@ -8,6 +8,8 @@
 #
 # Summary:
 #
+#	Part of the DumpsterFire Toolset. See documentation at https://github.com/TryCatchHCF/DumpsterFire
+#
 #
 # Description:
 #
@@ -37,7 +39,7 @@ class os_win_cmd_command( FireModule ):
 		return self.Description
 
         def Configure( self ):
-                self.commandStr = raw_input( "OS CLI Command: " )
+                self.commandStr = raw_input( "Windows cmd.exe command: " )
                 return
 
         def GetParameters( self ):
