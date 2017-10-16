@@ -136,7 +136,7 @@ class bash_aliases_fake_filesystem_errors( FireModule ):
 			print self.commentsStr + ": Running ==>", self.commandStr
 			os.system( self.commandStr )
 
-			self.commandStr = "echo \"alias fsck='echo \"Filesystem currupted, could not find entry point \"'\" >> " + self.bashFilePathStr
+			self.commandStr = "echo \"alias fsck='echo \"Filesystem corrupted, could not find entry point \"'\" >> " + self.bashFilePathStr
 			print self.commentsStr + ": Running ==>", self.commandStr
 			os.system( self.commandStr )
 

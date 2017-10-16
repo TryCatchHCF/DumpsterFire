@@ -8,6 +8,8 @@
 #
 # Summary:
 #
+#	Part of the DumpsterFire Toolset. See documentation at https://github.com/TryCatchHCF/DumpsterFire
+#
 #
 # Description:
 #
@@ -52,6 +54,9 @@ class osx_rickroll_open_youtube_video( FireModule ):
                 return
 
         def Ignite( self ):
+
+		print self.commentsStr + ": Setting system audio to max volume"
+		os.system( "osascript -e 'set volume output volume 100'")
 
 		print self.commentsStr + ": Opening Rick Astley Youtube video"
 		self.commandStr = "open https://www.youtube.com/watch?v=dQw4w9WgXcQ"

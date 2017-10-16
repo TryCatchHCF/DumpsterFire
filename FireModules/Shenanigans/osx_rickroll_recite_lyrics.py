@@ -22,20 +22,20 @@ import os, sys
 
 from FireModules.fire_module_base_class import *
 
-class osx_say_text( FireModule ):
+class osx_rickroll_recite_lyrics( FireModule ):
 
 	def __init__(self):
-		self.commentsStr = "Shenanigans/osx_say_text"
+		self.commentsStr = "Shenanigans/osx_rickroll_recite_lyrics"
 		self.textToSayStr = ""
 
 	def __init__(self, moofStr):
 		self.moofStr = moofStr
-		self.commentsStr = "Shenanigans/osx_say_text"
+		self.commentsStr = "Shenanigans/osx_rickroll_recite_lyrics"
 		self.textToSayStr = ""
 		return;
 
 	def Description( self ):
-		self.Description = "Runs OSX terminal's 'say' command, speaks the configured string"
+		self.Description = "Runs OSX terminal's 'say' command, speaks lyrics from Rick Astley's Never Gonna Give You Up"
 		return self.Description
 
         def Configure( self ):
@@ -61,10 +61,8 @@ class osx_say_text( FireModule ):
                         return
 
 		else:
-			print self.commentsStr + ": Setting system audio to max volume"
-			os.system( "osascript -e 'set volume output volume 100'")
-
-			print self.commentsStr + ": Speaking the following text => " + self.textToSayStr
+			print self.commentsStr + ": Speaking the lyrics from Rick Astley's Never Gonna Give You Up"
+			self.textToSayStr = ""
 			self.sayStr = "say " + self.textToSayStr 
 			os.system( self.sayStr )
 

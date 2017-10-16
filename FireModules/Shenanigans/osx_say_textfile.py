@@ -8,6 +8,8 @@
 #
 # Summary:
 #
+#	Part of the DumpsterFire Toolset. See documentation at https://github.com/TryCatchHCF/DumpsterFire
+#
 #
 # Description:
 #
@@ -59,6 +61,9 @@ class osx_say_textfile( FireModule ):
                         return
 
 		else:
+			print self.commentsStr + ": Setting system audio to max volume"
+			os.system( "osascript -e 'set volume output volume 100'")
+
 			print self.commentsStr + ": Speaking the following text => " + self.textfileToSay
 			self.sayStr = "say -f " + self.textfileToSay 
 			os.system( self.sayStr )
