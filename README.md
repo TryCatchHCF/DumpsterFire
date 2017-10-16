@@ -57,7 +57,7 @@ As the DumpsterFire executes, you'll be given regular date-time stamped feedback
 
 # Shenanigans
 
-April 1st happens! So do cyber wargames or your best friend's birthday. Some circumstances call for a little extra something. Finally infiltrate your opponent's perimeter in that 'net wars event? Celebrate with Shenanigans while locking in your victory! Best friend leave their screen unlocked on game night? Sharing is caring! From rickrolling to shell pranks, DumpsterFire's Shenanigans let you add some flavor to your operation. 
+April 1st happens! So do cyber wargames or your best friend's birthday. Some circumstances call for a little extra something. Finally infiltrate your opponent's perimeter in that net wars competition? Celebrate with Shenanigans while locking in your victory! Best friend leave their screen unlocked on game night? Sharing is caring! DumpsterFire's Shenanigans let you add some flavor to your operation. 
 
 Want to open the system's default browser and stream that Rick Astley awesomeness? Or set the system's shell aliases to pretend the filesystem is corrupted? 
 
