@@ -26,7 +26,7 @@ Wish you could support a Red Team engagement against a remote team that’s 7 ti
 
 Ever wanted to simultaneously rickroll all of your opponents’ systems during your annual cyberwarfare exercise? "Never gonna give you up!"
 
-See sample DumpsterFires below.
+See sample DumpsterFires below. And of course the Shenanigans section.
 
 # Tutorial
 See my CactusCon 2017 slides (included in project). The slides are written to stand on their own, providing background, approaches, specific use cases, and more. They'll put everything in context, and also won't put you to sleep. Unless they do put you to sleep, in which case you probably needed some rest anyway, so really we all come out ahead here.
@@ -73,7 +73,7 @@ Want to open the system's default browser and stream all of that Rick Astley awe
 
 **igniteDumpsterFire.py** - Headless script, invoked at command line with the filename of the DumpsterFire you wish to execute. Useful for igniting distributed DumpsterFires.
 
-**testFireModule.py** - Utility script for unit testing the Class methods of your custom Fire modules, without the hassle of running through the entire DumpsterFire Factory process to debug.
+**testFireModule.py** - Utility script for unit testing the Class methods of your custom Fire modules, without the hassle of running through the entire DumpsterFire Factory process to debug. Also useful for running a single Fire to check your settings. **testFireModule.py** will prompt you for configuration settings were applicable.
 
 **&#95;&#95;init&#95;&#95;.py** files - Required to make Python treat directories as containing Python packages, allows DumpsterFire toolset to find and load Fire modules.
 
@@ -109,7 +109,6 @@ Without creating any new FireModule classes, you can use these existing "custom"
 - FireModules/FileDownloads/download_custom_url.py
 - FireModules/OSCommand/os_linux_unix_command.py
 - FireModules/OSCommand/os_win_cmd_command.py
-- FireModules/OSCommand/os_win_powershell_command.py
 - FireModules/OSCommand/os_osx_applescript_command.py
 
 You can add any number of these to your DumpsterFire, each with its own custom actions. For example, you could chain together a dozen 'custom_url.py' Fire modules to build a complete, tailored browsing narrative. You could then have various 'OSCommand/' Fire instances that execute system commands to further reinforce your desired narrative of events. The 'OSCommand/' Fires in particular give you incredible flexbility. Each individual Fire in your DumpsterFire event chain takes any shell commands that are appropriate for the host's OS:
@@ -119,10 +118,6 @@ Linux/Unix (& OSX terminal):
 find /home -name '*.bash_history' -exec cat {} \; ; echo "Never gonna give you up" > rickroll.txt ; wall rickroll.txt
 
 Windows (cmd.exe):
-
-(Example)
-
-Windows (Powershell):
 
 (Example)
 
@@ -138,7 +133,7 @@ Want to keep your custom Fire modules completely separate in their own Category?
 
 <img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire_Custom_Categories.png></img>
 
-Your Fire module inherits from a class called FireModule. Copy the Fire module template from the Examples/ directory and implement the following class methods:
+Your Fire module inherits from a class called FireModule. As a starting point, you can copy an existing Fire module. Be sure to change the filename and all classname references in the file to match your new Fire. (Update the Category path referencesin the class's constructor methods too, if needed.)
 
 **Configure()** - Prompts user for input, populates FireModule’s parameters
 
@@ -148,13 +143,13 @@ Your Fire module inherits from a class called FireModule. Copy the Fire module t
 
 **SetParameters( string )** - Takes a single string & populates Fire's members
 
-**ActivateLogging( boolean )** - Sets flag for Fire to generate a log of its activities (great for review)
+**ActivateLogging( boolean )** - Sets flag for Fire to generate a log of its activities (great for review) NOTE: For initial release, logging to stdout is always on.
 
 **Ignite()** - Executes Fire's actions
 
 # Utility Scripts
 
-Testing Python classes can be annoying, especially when you want to unit test each of the class's methods, forcing you to slog through all the application's use cases to make sure each class method is executed in proper order. Bleh. So I've written and included a script that will properly invoke each method of your new FireModule-derived classes, enabling you to quickly churn-and-burn your way through debugging. You're welcome. :-)
+Testing Python classes can be annoying, especially when you want to unit test each of the class's methods, forcing you to slog through all the application's use cases to make sure each class method is executed in proper order. Bleh. So I've written and included a script that will properly invoke each method of your new FireModule-derived classes, enabling you to quickly churn-and-burn your way through debugging. You're welcome. :-)  Also a great way to run a Fire by itself to test your settings, see what it does, etc.
 
 At the command line, give the **testFireModule.py** script the relative filepath to your custom Fire module. The test script will call each of the required FireModule methods for you, in proper sequence (getting configuration prior to saving, etc.). The test script doesn't use exception handling, because Python only gives you useful errors (like pointing out that missing double-quote) when it crashes. Crash and burn your way to a successful custom Fire!
 
