@@ -34,7 +34,7 @@ class osx_rickroll_open_youtube_video( FireModule ):
 		return;
 
 	def Description( self ):
-		self.Description = "Opens Wikipedia Rick Astley webpage"
+		self.Description = "Opens default browser and starts YouTube video of Rick Astley. After turning system volume up to maximum."
 		return self.Description
 
         def Configure( self ):
