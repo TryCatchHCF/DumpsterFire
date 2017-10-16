@@ -8,6 +8,8 @@
 #
 # Summary:
 #
+#	Part of the DumpsterFire Toolset. See documentation at https://github.com/TryCatchHCF/DumpsterFire
+#
 #
 # Description:
 #
