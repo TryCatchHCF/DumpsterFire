@@ -113,23 +113,17 @@ Without creating any new FireModule classes, you can use these existing "custom"
 
 You can add any number of these to your DumpsterFire, each with its own custom actions. For example, you could chain together a dozen 'custom_url.py' Fire modules to build a complete, tailored browsing narrative. You could then have various 'OSCommand/' Fire instances that execute system commands to further reinforce your desired narrative of events. The 'OSCommand/' Fires in particular give you incredible flexbility. Each individual Fire in your DumpsterFire event chain takes any shell commands that are appropriate for the host's OS:
 
-Linux/Unix (& OSX terminal):
+Example: Linux/Unix (& OSX terminal)
 
 find /home -name '*.bash_history' -exec cat {} \; ; echo "Never gonna give you up" > rickroll.txt ; wall rickroll.txt
-
-Windows (cmd.exe):
-
-(Example)
-
-OSX (AppleScript):
-
-(Example)
 
 # Write Your Own Custom Fire Modules
 
 DumpsterFire is ready to use out of the box, but it's real value is in how easily you can extend DumpsterFire's scenario toolchest by creating your own custom Fire modules. By creating and tailoring Fire modules to match your specific needs, you can quickly expand the types of DumpsterFire scenarios you can build and execute. Simply write your new Fire module and drop it into an existing directory under FireModules/ and the DumpsterFire toolset will automatically load it at runtime & make it available.
 
 Want to keep your custom Fire modules completely separate in their own Category? Easy! Just create a new directory under FireModules/ and the DumpsterFire toolset will auto-detect and make it available as a new Category of Fires.
+
+NOTE: Be sure your new directory has an empty file named **&#95;&#95;init&#95;&#95;.py** otherwise the Python package manager won't be able to find it, and DumpsterFire won't see it.
 
 <img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire_Custom_Categories.png></img>
 
