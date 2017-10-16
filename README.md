@@ -127,7 +127,7 @@ NOTE: Be sure your new directory has an empty file named **&#95;&#95;init&#95;&#
 
 <img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFire_Custom_Categories.png></img>
 
-Your Fire module inherits from a class called FireModule. As a starting point, you can copy an existing Fire module. Be sure to change the filename and all classname references in the file to match your new Fire. (Update the Category path referencesin the class's constructor methods too, if needed.)
+Your Fire module inherits from a class called FireModule. As a starting point, you can copy an existing Fire module. Be sure to change the filename and all classname references in the file to match your new Fire. (Update the Category path references in the class's constructor methods too, if needed.)
 
 **Configure()** - Prompts user for input, populates FireModule’s parameters
 
