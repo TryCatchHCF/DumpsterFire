@@ -33,7 +33,7 @@ class nmap_rdp_vnc( FireModule ):
 		return
 
 	def Description( self ):
-		self.Description = "Runs nmap, probing SMB ports and services on all hosts of target network"
+		self.Description = "Runs nmap, probing RDP/VNC ports and services on all hosts of target network"
 		return self.Description
 
 
