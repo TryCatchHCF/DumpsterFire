@@ -147,3 +147,6 @@ Testing Python classes can be annoying, especially when you want to unit test ea
 
 At the command line, give the **testFireModule.py** script the relative filepath to your custom Fire module. The test script will call each of the required FireModule methods for you, in proper sequence (getting configuration prior to saving, etc.). The test script doesn't use exception handling, because Python only gives you useful errors (like pointing out that missing double-quote) when it crashes. Crash and burn your way to a successful custom Fire!
 
+# Updates
+
+I currently have about 30 more Fire modules in various stages of development and debugging. I'll roll those out through October and November. For every one I create, I end up wanting to create two more, so keep an eye on this space for updates.
