@@ -26,7 +26,7 @@ Wish you could support a Red Team engagement against a remote team that’s 7 ti
 
 Ever wanted to simultaneously rickroll all of your opponents’ systems during your annual cyberwarfare exercise? "Never gonna give you up!"
 
-See sample DumpsterFires below.
+See sample DumpsterFires below. And of course the Shenanigans section.
 
 # Tutorial
 See my CactusCon 2017 slides (included in project). The slides are written to stand on their own, providing background, approaches, specific use cases, and more. They'll put everything in context, and also won't put you to sleep. Unless they do put you to sleep, in which case you probably needed some rest anyway, so really we all come out ahead here.
@@ -59,7 +59,7 @@ As the DumpsterFire executes, you'll be given regular date-time stamped feedback
 
 April 1st happens! So do cyber wargames or your best friend's birthday. Some circumstances call for a little extra something. Finally infiltrate your opponent's perimeter in that net wars competition? Celebrate with Shenanigans while locking in your victory! Best friend leave their screen unlocked on game night? Sharing is caring! DumpsterFire's Shenanigans let you add some flavor to your operation. 
 
-Want to open the system's default browser and stream all of that Rick Astley awesomeness? After setting their system volume to maximum? Or set the system's shell aliases to pretend the filesystem is corrupted? 
+Want to open the system's default browser and stream all of that Rick Astley awesomeness? After setting their system volume to maximum? How about opening any URL you choose? Or setting the system's shell aliases to pretend the filesystem is corrupted? 
 
 <img src=https://github.com/TryCatchHCF/DumpsterFire/blob/master/Screenshots/DumpsterFireShenanigans.png></img>
 
