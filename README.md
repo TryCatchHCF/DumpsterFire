@@ -129,6 +129,8 @@ NOTE: Be sure your new directory has an empty file named **&#95;&#95;init&#95;&#
 
 Your Fire module inherits from a class called FireModule. As a starting point, you can copy an existing Fire module. Be sure to change the filename and all classname references in the file to match your new Fire. (Update the Category path references in the class's constructor methods too, if needed.)
 
+Required Class Methods:
+
 **Configure()** - Prompts user for input, populates FireModule’s parameters
 
 **Description()** - Return a string containing a description of the FireModule
