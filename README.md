@@ -24,7 +24,7 @@ Don’t have a Red Team but wish you had an easy way to run controlled, repeatab
 
 Wish you could support a Red Team engagement against a remote team that’s 7 timezones away, without waking up at 3:00am? Hit that snooze button!
 
-Ever wanted to simultaneously rickroll all of your opponents’ systems during your annual cyberwarfare exercise? "Never gonna give you up!"
+Ever wanted to simultaneously rickroll all of your opponents’ systems during your annual cyberwarfare exercise? "Never gonna let you down!"
 
 See sample DumpsterFires below. And of course the Shenanigans section.
 
