@@ -703,7 +703,7 @@ def LoadDumpsterFireConfig( dumpsterFireFilePath ):
 		configFile = open( dumpsterFireFilePath, 'r' )
 
 	except:
-		print "Error opening config file " + dumpsterFireName
+		print "Error opening config file " + dumpsterFireFilePath
 		print ""
 
 	# Some ugly brittleness ahead - hardcoded indexing of fields. Won't cause any
