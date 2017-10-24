@@ -2,7 +2,7 @@
 # 
 # Filename:  dumpsterFireFactory.py 
 #
-# Version: 1.0.0
+# Version: 1.0.1
 #
 # Author:  Joe Gervais (TryCatchHCF)
 #
@@ -1508,33 +1508,6 @@ def Help():
 	choice = raw_input( "Press return to continue... " )
 
 
-# ================================================================================================
-#
-# Function:
-#
-# Description:
-#
-# ================================================================================================
-
-def About():
-	print ""
-	print "=====================  About DumpsterFire  ====================="
-	print ""
-	print "\"Make Smoke, Make Fire, Distract & Attract Incident Responders\""
-	print ""
-	print "                        Written by TryCatchHCF"
-	print "                https://github.com/TryCatchHCF/DumpsterFire"
-	print ""
-	print "DETAILS:"
-	print ""
-	print ""
-	print "CREATE YOUR OWN FIRE MODULES:"
-	print ""
-	choice = raw_input( "Press return to continue... " )
-
-	return
-
-	
 
 # ================================================================================================
 #
