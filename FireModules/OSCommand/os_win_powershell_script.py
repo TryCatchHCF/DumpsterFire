@@ -16,7 +16,6 @@
 #
 # Example:
 #
-#
 
 import sys, subprocess
 
