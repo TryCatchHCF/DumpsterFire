@@ -2,7 +2,7 @@
 #
 # Filename:  testFireModule.py
 #
-# Version: 1.0.0
+# Version: 1.0.1
 #
 # Author:  Joe Gervais (TryCatchHCF)
 #
@@ -20,10 +20,10 @@
 #
 # Example:
 #
-#   $ ./testFireModule.py FireModules.Websurfing.warez_sites warez_sites
+#   $ ./testFireModule.py FireModules/Websurfing/warez_sites.py
 #
 
-import os, sys, getopt, datetime, random, importlib, json, dumpsterFireFactory
+import os, sys, getopt, importlib, dumpsterFireFactory
 
 
 
@@ -37,20 +37,32 @@ import os, sys, getopt, datetime, random, importlib, json, dumpsterFireFactory
 #
 # ================================================================================================
 
-def DebugTestFireTemplateMethods( modulePath, fireName ):
+def DebugTestFireTemplateMethods( fireFilepathStr ):
+
+	# Strip trailing ".py" suffix from filepath so we can convert to Python package format
+	fireFilepathStr = fireFilepathStr[ :-3 ]
+
+	# Convert filepath to Pythong package format
+	firePackagePathStr = fireFilepathStr.replace( '/', '.' )	
+
+	# Break down that package path into its components so we can grab the Fire name
+	fireElementList = firePackagePathStr.split( "." )
+
+	# Extract Fire name
+	fireNameStr = fireElementList[ -1 ]
 
         print ""
         print "-------------------------------------------------"
         print "=============  Test Fire Module  ================"
         print "-------------------------------------------------"
         print ""
-        print "Module Path:", modulePath
-        print "Fire Name:", fireName
+        print "Module Path:", firePackagePathStr
+        print "Fire Name:", fireNameStr
 	print ""
 
 	print "---------- Trying to locate Fire in module path... ----------"
 	print ""	
-        currentFireClass = getattr( importlib.import_module( modulePath, fireName ), fireName )
+        currentFireClass = getattr( importlib.import_module( firePackagePathStr, fireNameStr ), fireNameStr )
         thisFire = currentFireClass( "" )
 
 	print "---------- Calling Configure() method ----------"
@@ -92,14 +104,14 @@ def DebugTestFireTemplateMethods( modulePath, fireName ):
 
 
 if __name__ == "__main__":
-	if ( len(sys.argv) != 3 ):
+	if ( len(sys.argv) != 2 ):
 		print ""
-		print "usage: testFireModule.py <fireModulePath> <fireModuleName>>"
+		print "usage: testFireModule.py <filePathToFire>"
 		print ""
-		print "Example: ./testFireModule.py FireModules.Websurfing.warez_sites warez_sites"
+		print "Example: ./testFireModule.py FireModules/Websurfing/warez_sites"
 		print ""
 		exit
 
 	else:
-		DebugTestFireTemplateMethods( sys.argv[1], sys.argv[2] )
+		DebugTestFireTemplateMethods( sys.argv[1] )
 
