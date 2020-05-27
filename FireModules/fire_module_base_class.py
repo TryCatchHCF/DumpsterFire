@@ -15,23 +15,23 @@
 class FireModule:
 
 	def Configure():
-		print "Base Class: Getting configs!"
+		print("Base Class: Getting configs!")
 		return
 
 	def GetParameters():
 		return "Base Class: Parameters!"
 
 	def SetParameters( parametersStr ):
-		print "Base Class: Setting parameters!"
-		print parametersStr
+		print("Base Class: Setting parameters!")
+		print(parametersStr)
 		return
 
 	def ActivateLogging( logFlag ):
-		print "Base Class: Setting Logging flag!"
-		print logFlag
+		print("Base Class: Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite():
-		print "Base Class: Such Fire! Much Heat!"
+		print("Base Class: Such Fire! Much Heat!")
 		return
 

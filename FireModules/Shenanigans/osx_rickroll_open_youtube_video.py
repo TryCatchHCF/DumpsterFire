@@ -49,16 +49,16 @@ class osx_rickroll_open_youtube_video( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
 
-		print self.commentsStr + ": Setting system audio to max volume"
+		print(self.commentsStr + ": Setting system audio to max volume")
 		os.system( "osascript -e 'set volume output volume 100'")
 
-		print self.commentsStr + ": Opening Rick Astley Youtube video"
+		print(self.commentsStr + ": Opening Rick Astley Youtube video")
 		self.commandStr = "open https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 		os.system( self.commandStr )
 

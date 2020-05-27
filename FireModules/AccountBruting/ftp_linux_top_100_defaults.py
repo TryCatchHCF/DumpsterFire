@@ -45,22 +45,22 @@ class ftp_linux_top_100_defaults( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
 
 		if ( self.targetSystem == "" ):
-			print "## ", self.commentsStr, ": Error - Network address string is blank"
+			print("## ", self.commentsStr, ": Error - Network address string is blank")
 			return
 		else:
 
 			self.mCurrentDateTimeUTC = datetime.datetime.utcnow()
 
-			print "UTC", self.mCurrentDateTimeUTC.strftime("%x %X"), "- Attempting ftp connection to:", self.targetSystem
+			print("UTC", self.mCurrentDateTimeUTC.strftime("%x %X"), "- Attempting ftp connection to:", self.targetSystem)
 			try:
-				print "Attempting to ftp into host", self.targetSystem
+				print("Attempting to ftp into host", self.targetSystem)
 
 				i = 0
 				m = 0
@@ -75,7 +75,7 @@ class ftp_linux_top_100_defaults( FireModule ):
 					i = i + 1
 
 			except:
-				print "Could not establish ftp connection"
+				print("Could not establish ftp connection")
 
 		return
 

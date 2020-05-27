@@ -39,8 +39,8 @@ class nmap_smb_probes( FireModule ):
 
 
         def Configure( self ):
-		print "Standard nmap targets accepted, e.g.  192.168.0.1  or  192.168.1-254 or comma-separated IP addresses"
-		print ""
+		print("Standard nmap targets accepted, e.g.  192.168.0.1  or  192.168.1-254 or comma-separated IP addresses")
+		print("")
                 self.networkAddrStr = raw_input( "Enter Target Network IP Address (W.X.Y.Z): " )
                 return
 
@@ -52,17 +52,17 @@ class nmap_smb_probes( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
                 if ( self.networkAddrStr == "" ):
-                        print "## ", self.commentsStr, ": Error - Network address string is blank"
+                        print("## ", self.commentsStr, ": Error - Network address string is blank")
                         return
 		else:
 			self.commandStr = "nmap -Pn -n --open -sT -sV -p139,445 --script=smb-os-discovery,smb-system-info,smb-enum-users,smb-enum-shares " + self.networkAddrStr
-			print self.commentsStr + ": Scanning with " + self.commandStr
+			print(self.commentsStr + ": Scanning with " + self.commandStr)
 			os.system( self.commandStr )
 
 		return

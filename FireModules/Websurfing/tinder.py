@@ -43,23 +43,23 @@ class tinder( FireModule ):
 		return ""
 
 	def SetParameters( self, parametersStr ):
-		print parametersStr
+		print(parametersStr)
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Opening URL session to Tinder landing page"
+		print(self.commentsStr + ": Opening URL session to Tinder landing page")
 		self.webSession = urllib.urlopen( 'https://tinder.com/' )
 		trash = self.webSession.read()
 
 		self.SleepSession()
 
-		print self.commentsStr + ": Opening URL session to Tinder blog page"
+		print(self.commentsStr + ": Opening URL session to Tinder blog page")
 		self.webSession = urllib.urlopen( 'http://www.tinder.com/blog' )
 		trash = self.webSession.read()
 
@@ -68,7 +68,7 @@ class tinder( FireModule ):
 
 		# Random sleep from 5-100 seconds, because humans read
 		seconds = random.randint( 5, 100 )
-		print "Sleeping for", seconds, "seconds to simulate human browsing habits"
+		print("Sleeping for", seconds, "seconds to simulate human browsing habits")
 		time.sleep( seconds )
 
 		return

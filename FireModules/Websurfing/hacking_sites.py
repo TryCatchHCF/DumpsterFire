@@ -43,41 +43,41 @@ class hacking_sites( FireModule ):
 		return ""
 
 	def SetParameters( self, parametersStr ):
-		print parametersStr
+		print(parametersStr)
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Opening URL session to ExploitDB landing page"
+		print(self.commentsStr + ": Opening URL session to ExploitDB landing page")
 		self.webSession = urllib.urlopen( 'https://www.exploit-db.com/' )
 		trash = self.webSession.read()
 
 		self.SleepSession()
 
-		print self.commentsStr + ": Opening URL session to ExploitDB exploits"
+		print(self.commentsStr + ": Opening URL session to ExploitDB exploits")
 		self.webSession = urllib.urlopen( 'https://www.exploit-db.com/browse/' )
 		trash = self.webSession.read()
 
 		self.SleepSession()
 
-		print self.commentsStr + ": Opening URL session to ExploitDB Google hacking DB"
+		print(self.commentsStr + ": Opening URL session to ExploitDB Google hacking DB")
 		self.webSession = urllib.urlopen( 'https://www.exploit-db.com/google-hacking-database/' )
 		trash = self.webSession.read()
 
 		self.SleepSession()
 
-		print self.commentsStr + ": Opening URL session to SecList FullDisclosure site"
+		print(self.commentsStr + ": Opening URL session to SecList FullDisclosure site")
 		self.webSession = urllib.urlopen( 'http://seclists.org/fulldisclosure/' )
 		trash = self.webSession.read()
 
 		self.SleepSession()
 
-		print self.commentsStr + ": Opening URL session to Shodan (systems with default passwords)"
+		print(self.commentsStr + ": Opening URL session to Shodan (systems with default passwords)")
 		self.webSession = urllib.urlopen( 'https://www.shodan.io/search?query=%22default+password%22' )
 		trash = self.webSession.read()
 
@@ -88,7 +88,7 @@ class hacking_sites( FireModule ):
 
 		# Random sleep from 5-100 seconds, because humans read
 		seconds = random.randint( 5, 100 )
-		print "Sleeping for", seconds, "seconds to simulate human browsing habits"
+		print("Sleeping for", seconds, "seconds to simulate human browsing habits")
 		time.sleep( seconds )
 
 		return

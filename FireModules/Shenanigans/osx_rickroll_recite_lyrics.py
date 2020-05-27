@@ -46,16 +46,16 @@ class osx_rickroll_recite_lyrics( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
 
-		print self.commentsStr + ": Setting system audio to max volume"
+		print(self.commentsStr + ": Setting system audio to max volume")
 		os.system( "osascript -e 'set volume output volume 100'")
 
-		print self.commentsStr + ": Speaking the lyrics from Rick Astley's Never Gonna Give You Up"
+		print(self.commentsStr + ": Speaking the lyrics from Rick Astley's Never Gonna Give You Up")
 
 		self.sayStr = "say " + "Never gonna give you up"
 		os.system( self.sayStr )

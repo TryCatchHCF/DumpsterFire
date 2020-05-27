@@ -43,17 +43,17 @@ class google_search_offshore_tax_shelters( FireModule ):
 		return ""
 
 	def SetParameters( self, parametersStr ):
-		print parametersStr
+		print(parametersStr)
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Opening URL session for Google search on offshore tax shelters"
+		print(self.commentsStr + ": Opening URL session for Google search on offshore tax shelters")
 		self.webSession = urllib.urlopen( 'https://www.google.com/search?q=offshore+tax+shelters&oq=offshore+tax+shelters' )
 		trash = self.webSession.read()
 

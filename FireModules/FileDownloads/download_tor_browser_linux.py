@@ -48,14 +48,14 @@ class download_tor_browser_linux( FireModule ):
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
 		self.filepath = self.mDirectoryPath + "/" + 'tor-browser.zip'
-		print self.commentsStr + ": Downloading Tor Browser to: " + self.filepath
+		print(self.commentsStr + ": Downloading Tor Browser to: " + self.filepath)
 		urllib.urlretrieve( 'https://www.torproject.org/dist/torbrowser/7.0.6/tor-browser-linux64-7.0.6_en-US.tar.xz', self.filepath )
 
 		return

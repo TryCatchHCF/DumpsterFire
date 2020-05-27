@@ -50,13 +50,13 @@ class osx_rickroll_multi_dialogs( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
 
-		print self.commentsStr + ": Spawning rickrolling dialogs"
+		print(self.commentsStr + ": Spawning rickrolling dialogs")
 		self.beepStr = "osascript -e beep"
 
 		os.system( self.beepStr )

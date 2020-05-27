@@ -48,13 +48,13 @@ class download_custom_url( FireModule ):
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Downloading: " + self.mURL
+		print(self.commentsStr + ": Downloading: " + self.mURL)
 		urllib.urlretrieve( self.mURL, 'download.file' )
 
 		return

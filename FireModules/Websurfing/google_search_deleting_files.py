@@ -43,17 +43,17 @@ class google_search_deleting_files( FireModule ):
 		return ""
 
 	def SetParameters( self, parametersStr ):
-		print parametersStr
+		print(parametersStr)
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Opening URL session for Google search on securely deleting files"
+		print(self.commentsStr + ": Opening URL session for Google search on securely deleting files")
 		self.webSession = urllib.urlopen( 'https://www.google.com/search?q=securely+deleting+files&oq=securely+deleting+files' )
 		trash = self.webSession.read()
 

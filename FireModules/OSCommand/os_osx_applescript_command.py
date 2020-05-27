@@ -39,7 +39,7 @@ class os_osx_applescript_command( FireModule ):
 		return self.Description
 
         def Configure( self ):
-		print "Example Applscript command: tell app \"Finder\" to display dialog \"Never Gonna Give You Up!\""
+		print("Example Applscript command: tell app \"Finder\" to display dialog \"Never Gonna Give You Up!\"")
                 self.commandStr = raw_input( "Applescript Command: " )
                 return
 
@@ -51,18 +51,18 @@ class os_osx_applescript_command( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
 
                 if ( self.commandStr == "" ):
-                        print "## ", self.commentsStr, ": Error - OS command string is blank"
+                        print("## ", self.commentsStr, ": Error - OS command string is blank")
                         return
 
 		else:
-			print self.commentsStr + ": Running OS command => " + self.commandStr
+			print(self.commentsStr + ": Running OS command => " + self.commandStr)
 			self.osaCommandStr = "osascript -e '" + self.commandStr + "'"
 			os.system( self.osaCommandStr )
 

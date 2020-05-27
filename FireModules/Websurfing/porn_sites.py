@@ -40,29 +40,29 @@ class porn_sites( FireModule ):
 		return ""
 
 	def SetParameters( self, parametersStr ):
-		print parametersStr
+		print(parametersStr)
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Opening URL session to PornHub landing page"
+		print(self.commentsStr + ": Opening URL session to PornHub landing page")
 		self.webSession = urllib.urlopen( 'https://www.pornhub.com/' )
 		trash = self.webSession.read()
 
 		self.SleepSession()
 
-		print self.commentsStr + ": Opening URL session to RedTube landing page"
+		print(self.commentsStr + ": Opening URL session to RedTube landing page")
 		self.webSession = urllib.urlopen( 'https://www.redtube.com/' )
 		trash = self.webSession.read()
 
 		self.SleepSession()
 
-		print self.commentsStr + ": Opening URL session to PornTube landing page"
+		print(self.commentsStr + ": Opening URL session to PornTube landing page")
 		self.webSession = urllib.urlopen( 'https://www.porntube.com/' )
 		trash = self.webSession.read()
 
@@ -73,7 +73,7 @@ class porn_sites( FireModule ):
 
 		# Random sleep from 5-100 seconds, because humans read
 		seconds = random.randint( 5, 100 )
-		print "Sleeping for", seconds, "seconds to simulate human browsing habits"
+		print("Sleeping for", seconds, "seconds to simulate human browsing habits")
 		time.sleep( seconds )
 
 		return

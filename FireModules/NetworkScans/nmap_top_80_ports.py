@@ -38,8 +38,8 @@ class nmap_top_80_ports( FireModule ):
 		return self.Description
 
         def Configure( self ):
-		print "Standard nmap targets accepted, e.g.  192.168.0.1  or  192.168.1-254 or comma-separated IP addresses"
-		print ""
+		print("Standard nmap targets accepted, e.g.  192.168.0.1  or  192.168.1-254 or comma-separated IP addresses")
+		print("")
                 self.networkAddrStr = raw_input( "Enter Target Network IP Address (W.X.Y.Z): " )
                 return
 
@@ -51,18 +51,18 @@ class nmap_top_80_ports( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
 
                 if ( self.networkAddrStr == "" ):
-                        print "## ", self.commentsStr, ": Error - Network address string is blank"
+                        print("## ", self.commentsStr, ": Error - Network address string is blank")
                         return
 		else:
 			self.commandStr = "nmap -Pn -n --open -sT -sV --top-ports=80 " + self.networkAddrStr 
-			print self.commentsStr + ": Scanning with " + self.commandStr
+			print(self.commentsStr + ": Scanning with " + self.commandStr)
 			os.system( self.commandStr )
 
 		return

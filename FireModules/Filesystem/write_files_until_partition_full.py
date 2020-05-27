@@ -52,14 +52,14 @@ class write_files_until_partition_full( FireModule ):
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Writing out endless", self.fileNameBaseStr, "files to: " + self.mTargetDirectory
+		print(self.commentsStr + ": Writing out endless", self.fileNameBaseStr, "files to: " + self.mTargetDirectory)
 
 		# First we create files filled with 16MB of random trash, and continue until the target
 		# directory/partition can't fit another 16MB file. Then repeat process with 1MB and 1KB
@@ -84,7 +84,7 @@ class write_files_until_partition_full( FireModule ):
 
 				self.sourceFilename = self.mTargetDirectory + self.GenerateFilename()
 
-				print "Creating:", self.sourceFilename
+				print("Creating:", self.sourceFilename)
 
 				self.file = open( self.sourceFilename, "w")
 
@@ -94,7 +94,7 @@ class write_files_until_partition_full( FireModule ):
 
 		except:
 			# Exit when we can no longer create a file of the desired size in target directory
-			print "Error creating file", self.sourceFilename, ", should mean partition is filling up."
+			print("Error creating file", self.sourceFilename, ", should mean partition is filling up.")
 			return
 
 		return

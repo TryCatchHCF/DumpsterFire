@@ -45,26 +45,26 @@ class telnet_top_100_defaults( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
 
 		if ( self.networkAddrStr == "" ):
-			print "## ", self.commentsStr, ": Error - Network address string is blank"
+			print("## ", self.commentsStr, ": Error - Network address string is blank")
 			return
 		else:
 
 			self.mCurrentDateTimeUTC = datetime.datetime.utcnow()
 
-			print "UTC", self.mCurrentDateTimeUTC.strftime("%x %X"), "- Attempting telnet connection to:", self.networkAddrStr
+			print("UTC", self.mCurrentDateTimeUTC.strftime("%x %X"), "- Attempting telnet connection to:", self.networkAddrStr)
 
 			try:
 				# Set timeout to 3 seconds so we don't stall out
 				telnetSession = telnetlib.Telnet( self.networkAddrStr, 23, 3 )
 	
-				print "Telnet session established to host:", self.networkAddrStr
+				print("Telnet session established to host:", self.networkAddrStr)
 
 				i = 0
 				m = 0
@@ -83,7 +83,7 @@ class telnet_top_100_defaults( FireModule ):
 						m = m + 1
 					i = i + 1
 			except:
-				print "Could not establish telnet connection"
+				print("Could not establish telnet connection")
 
 		return
 

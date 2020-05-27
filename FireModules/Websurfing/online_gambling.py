@@ -40,30 +40,30 @@ class online_gambling( FireModule ):
 		return ""
 
 	def SetParameters( self, parametersStr ):
-		print self.commentsStr + ": Setting parameters!"
-		print parametersStr
+		print(self.commentsStr + ": Setting parameters!")
+		print(parametersStr)
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Opening URL session to GamblingSites.org landing page"
+		print(self.commentsStr + ": Opening URL session to GamblingSites.org landing page")
 		self.webSession = urllib.urlopen( 'https://www.gamblingsites.org' )
 		trash = self.webSession.read()
 
 		self.SleepSession()
 
-		print self.commentsStr + ": Opening URL session to CaesarsCasino.com landing page"
+		print(self.commentsStr + ": Opening URL session to CaesarsCasino.com landing page")
 		self.webSession = urllib.urlopen( 'https://www.caesarscasino.com' )
 		trash = self.webSession.read()
 
 		self.SleepSession()
 
-		print self.commentsStr + ": Opening URL session to CasinoAus.com landing page"
+		print(self.commentsStr + ": Opening URL session to CasinoAus.com landing page")
 		self.webSession = urllib.urlopen( 'https://www.casinoaus.com' )
 		trash = self.webSession.read()
 
@@ -74,7 +74,7 @@ class online_gambling( FireModule ):
 
 		# Random sleep from 5-100 seconds, because humans read
 		seconds = random.randint( 5, 100 )
-		print "Sleeping for", seconds, "seconds to simulate human browsing habits"
+		print("Sleeping for", seconds, "seconds to simulate human browsing habits")
 		time.sleep( seconds )
 
 		return

@@ -43,17 +43,17 @@ class insider_revenge( FireModule ):
 		return ""
 
 	def SetParameters( self, parametersStr ):
-		print parametersStr
+		print(parametersStr)
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Opening URL session to <...>"
+		print(self.commentsStr + ": Opening URL session to <...>")
 
 		#webSession = urllib2.urlopen( 'https://www.facebook.com' )
 		#trash = webSession.read()

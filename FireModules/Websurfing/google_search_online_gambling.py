@@ -43,17 +43,17 @@ class google_search_online_gambling( FireModule ):
 		return ""
 
 	def SetParameters( self, parametersStr ):
-		print parametersStr
+		print(parametersStr)
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Opening URL session for Google search on online gambling"
+		print(self.commentsStr + ": Opening URL session for Google search on online gambling")
 		self.webSession = urllib.urlopen( 'https://www.google.com/search?q=online+gambling+sites&oq=online+gambling+sites' )
 		trash = self.webSession.read()
 

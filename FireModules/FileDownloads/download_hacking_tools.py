@@ -52,34 +52,34 @@ class download_hacking_tools( FireModule ):
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
 		self.filepath = self.mDirectoryPath + 'mimikatz.zip'
-		print self.commentsStr + ": Downloading Mimikatz to: " + self.filepath
+		print(self.commentsStr + ": Downloading Mimikatz to: " + self.filepath)
 		urllib.urlretrieve( 'https://github.com/gentilkiwi/mimikatz/archive/master.zip', self.filepath )
 
 		self.filepath = self.mDirectoryPath + 'responder.zip'
-		print self.commentsStr + ": Downloading Responder to: " + self.filepath
+		print(self.commentsStr + ": Downloading Responder to: " + self.filepath)
 		urllib.urlretrieve( 'https://github.com/SpiderLabs/Responder/archive/master.zip', self.filepath )
 
 		self.filepath = self.mDirectoryPath + 'scapy.zip'
-		print self.commentsStr + ": Downloading Scapy to: " + self.filepath
+		print(self.commentsStr + ": Downloading Scapy to: " + self.filepath)
 		urllib.urlretrieve( 'https://github.com/secdev/scapy/archive/v2.3.2.zip', self.filepath )
 
 		self.filepath = self.mDirectoryPath + 'sqlmap.zip'
-		print self.commentsStr + ": Downloading SQLMap to: " + self.filepath
+		print(self.commentsStr + ": Downloading SQLMap to: " + self.filepath)
 		urllib.urlretrieve( 'https://github.com/sqlmapproject/sqlmap/archive/master.zip', self.filepath )
 
 		self.filepath = self.mDirectoryPath + 'default-passwords.csv'
-		print self.commentsStr + ": Downloading default passwords list to: " + self.filepath
+		print(self.commentsStr + ": Downloading default passwords list to: " + self.filepath)
 		urllib.urlretrieve( 'https://github.com/danielmiessler/SecLists/blob/master/Passwords/default-passwords.csv', self.filepath )
 
 		self.filepath = self.mDirectoryPath + '10k_most_common.txt'
-		print self.commentsStr + ": Downloading 10K common passwords to: " + self.filepath
+		print(self.commentsStr + ": Downloading 10K common passwords to: " + self.filepath)
 		urllib.urlretrieve( 'https://github.com/danielmiessler/SecLists/blob/master/Passwords/10k_most_common.txt', self.filepath )
 
 		return

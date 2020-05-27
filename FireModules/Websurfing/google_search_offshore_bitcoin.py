@@ -43,17 +43,17 @@ class google_search_offshore_bitcoin( FireModule ):
 		return ""
 
 	def SetParameters( self, parametersStr ):
-		print parametersStr
+		print(parametersStr)
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Opening URL session for Google search on offshore bitcoin exchanges"
+		print(self.commentsStr + ": Opening URL session for Google search on offshore bitcoin exchanges")
 		self.webSession = urllib.urlopen( 'https://www.google.com/search?q=bitcoin+offshore+exchanges&oq=bitcoin+offshore+exchanges' )
 		trash = self.webSession.read()
 

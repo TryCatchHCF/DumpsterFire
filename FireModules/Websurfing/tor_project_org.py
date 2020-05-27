@@ -43,29 +43,29 @@ class tor_project_org( FireModule ):
 		return ""
 
 	def SetParameters( self, parametersStr ):
-		print parametersStr
+		print(parametersStr)
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Opening URL session to Tor Project landing page"
+		print(self.commentsStr + ": Opening URL session to Tor Project landing page")
 		self.webSession = urllib.urlopen( 'https://www.torproject.org/' )
 		trash = self.webSession.read()
 
 		self.SleepSession()
 
-		print self.commentsStr + ": Opening URL session to Tor Project blog page"
+		print(self.commentsStr + ": Opening URL session to Tor Project blog page")
 		self.webSession = urllib.urlopen( 'https://blog.torproject.org/' )
 		trash = self.webSession.read()
 
 		self.SleepSession()
 
-		print self.commentsStr + ": Opening URL session to Tor Browser page"
+		print(self.commentsStr + ": Opening URL session to Tor Browser page")
 		self.webSession = urllib.urlopen( 'https://www.torproject.org/projects/torbrowser.html' )
 		trash = self.webSession.read()
 
@@ -76,7 +76,7 @@ class tor_project_org( FireModule ):
 
 		# Random sleep from 5-100 seconds, because humans read
 		seconds = random.randint( 5, 100 )
-		print "Sleeping for", seconds, "seconds to simulate human browsing habits"
+		print("Sleeping for", seconds, "seconds to simulate human browsing habits")
 		time.sleep( seconds )
 
 		return

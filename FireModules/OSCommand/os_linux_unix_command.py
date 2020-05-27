@@ -50,18 +50,18 @@ class os_linux_unix_command( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
 
                 if ( self.commandStr == "" ):
-                        print "## ", self.commentsStr, ": Error - OS command string is blank"
+                        print("## ", self.commentsStr, ": Error - OS command string is blank")
                         return
 
 		else:
-			print self.commentsStr + ": Running OS command => " + self.commandStr
+			print(self.commentsStr + ": Running OS command => " + self.commandStr)
 			os.system( self.commandStr )
 
 		return

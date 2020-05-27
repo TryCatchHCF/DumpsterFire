@@ -48,18 +48,18 @@ class custom_url( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
 
                 if ( self.customUrlStr == "" ):
-                        print "## ", self.commentsStr, ": Error - URL is blank"
+                        print("## ", self.commentsStr, ": Error - URL is blank")
                         return
 
 		else:
-			print self.commentsStr + ": Opening connection to URL => " + self.customUrlStr
+			print(self.commentsStr + ": Opening connection to URL => " + self.customUrlStr)
 			self.webSession = urllib.urlopen( self.customUrlStr )
 			trash = self.webSession.read()	
 

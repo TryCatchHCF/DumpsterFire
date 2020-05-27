@@ -48,16 +48,16 @@ class osx_chicken_loop_youtube_video( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
 
-		print self.commentsStr + ": Setting system audio to max volume"
+		print(self.commentsStr + ": Setting system audio to max volume")
 		os.system( "osascript -e 'set volume output volume 100'")
 
-		print self.commentsStr + ": Opening 10-hour loop of chicken sounds on Youtube"
+		print(self.commentsStr + ": Opening 10-hour loop of chicken sounds on Youtube")
 		self.commandStr = "open https://www.youtube.com/watch?v=E9BQAAT10Mwi"
 		os.system( self.commandStr )
 

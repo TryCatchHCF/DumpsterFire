@@ -48,14 +48,14 @@ class download_kali( FireModule ):
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
 		self.filepath = self.mDirectoryPath + "/" + 'kali.iso'
-		print self.commentsStr + ": Downloading Kali to: " + self.filepath
+		print(self.commentsStr + ": Downloading Kali to: " + self.filepath)
 		urllib.urlretrieve( 'http://cdimage.kali.org/kali-2017.2/kali-linux-2017.2-amd64.iso', self.filepath )
 
 		return

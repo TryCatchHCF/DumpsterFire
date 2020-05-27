@@ -49,13 +49,13 @@ class osx_rickroll_open_wikipedia_page( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
 
-		print self.commentsStr + ": Opening Wikipedia Rick Astley webpage"
+		print(self.commentsStr + ": Opening Wikipedia Rick Astley webpage")
 		self.commandStr = "open https://en.wikipedia.org/wiki/Rick_Astley"
 		os.system( self.commandStr )
 

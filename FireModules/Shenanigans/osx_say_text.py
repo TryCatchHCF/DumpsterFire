@@ -50,21 +50,21 @@ class osx_say_text( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
 
                 if ( self.textToSayStr == "" ):
-                        print "## ", self.commentsStr, ": Error - Speech string is blank"
+                        print("## ", self.commentsStr, ": Error - Speech string is blank")
                         return
 
 		else:
-			print self.commentsStr + ": Setting system audio to max volume"
+			print(self.commentsStr + ": Setting system audio to max volume")
 			os.system( "osascript -e 'set volume output volume 100'")
 
-			print self.commentsStr + ": Speaking the following text => " + self.textToSayStr
+			print(self.commentsStr + ": Speaking the following text => " + self.textToSayStr)
 			self.sayStr = "say " + self.textToSayStr 
 			os.system( self.sayStr )
 

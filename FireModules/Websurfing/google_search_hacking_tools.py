@@ -43,17 +43,17 @@ class google_search_hacking_tools( FireModule ):
 		return ""
 
 	def SetParameters( self, parametersStr ):
-		print parametersStr
+		print(parametersStr)
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Opening URL session for Google search on hacking tools and techniques"
+		print(self.commentsStr + ": Opening URL session for Google search on hacking tools and techniques")
 		self.webSession = urllib.urlopen( 'https://www.google.com/search?q=hacking+tools+techniques&oq=hacking+tools+techniques' )
 		trash = self.webSession.read()
 

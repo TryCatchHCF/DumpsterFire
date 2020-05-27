@@ -46,9 +46,9 @@ class os_win_powershell_script( FireModule ):
 		self.psScriptFilepathStr = self.tempStr.replace( '\\', '\\\\' )
 
 		# Let them know what happened
-		print ""
-		print "** Added backslash escapes to filepath for you, otherwise Python gets sad when loading file"
-		print "** Stored filepath =", self.psScriptFilepathStr
+		print("")
+		print("** Added backslash escapes to filepath for you, otherwise Python gets sad when loading file")
+		print("** Stored filepath =", self.psScriptFilepathStr)
 
                 return
 
@@ -60,18 +60,18 @@ class os_win_powershell_script( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print(self.commentsStr + ": Setting Logging flag!")
+                print(logFlag)
                 return
 
         def Ignite( self ):
 
                 if ( self.psScriptFilepathStr == "" ):
-                        print "## ", self.commentsStr, ": Error - Powershell script filepath is blank"
+                        print("## ", self.commentsStr, ": Error - Powershell script filepath is blank")
                         return
 
 		else:
-			print self.commentsStr + ": Executing Powershell script  => " + self.psScriptFilepathStr
+			print(self.commentsStr + ": Executing Powershell script  => " + self.psScriptFilepathStr)
 
 			self.process = subprocess.Popen([ "powershell.exe", self.psScriptFilepathStr ], stdout=sys.stdout )
 

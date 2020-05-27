@@ -50,13 +50,13 @@ class osx_open_url_in_browser( FireModule ):
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Opening default system Web browser with URL: " + self.mURL
+		print(self.commentsStr + ": Opening default system Web browser with URL: " + self.mURL)
 
 		self.commandStr = "open " + self.mURL
 		os.system( self.commandStr )

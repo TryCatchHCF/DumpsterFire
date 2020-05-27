@@ -43,17 +43,17 @@ class google_search_hiding_data( FireModule ):
 		return ""
 
 	def SetParameters( self, parametersStr ):
-		print parametersStr
+		print(parametersStr)
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Opening URL session for Google search on techniques for hiding data"
+		print(self.commentsStr + ": Opening URL session for Google search on techniques for hiding data")
 		self.webSession = urllib.urlopen( 'https://www.google.com/search?q=hiding+data+techniques&oq=hiding+data+techniques' )
 		trash = self.webSession.read()
 

@@ -52,14 +52,14 @@ class create_500000_files( FireModule ):
 		return
 
 	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
+		print(self.commentsStr + ": Setting Logging flag!")
+		print(logFlag)
 		return
 
 
 	def Ignite( self ):
 
-		print self.commentsStr + ": Creating 500,000 nomnom files in: " + self.mTargetDirectory
+		print(self.commentsStr + ": Creating 500,000 nomnom files in: " + self.mTargetDirectory)
 
 		# First we create files filled with 16MB of random trash, and continue until the target
 		# directory/partition can't fit another 16MB file. Then repeat process with 1MB and 1KB
@@ -83,7 +83,7 @@ class create_500000_files( FireModule ):
 
 		except:
 			# Exit when we can no longer create a file of the desired size in target directory
-			print "Error creating nomnom file", self.sourceFilenameStr
+			print("Error creating nomnom file", self.sourceFilenameStr)
 			return
 
 		return
