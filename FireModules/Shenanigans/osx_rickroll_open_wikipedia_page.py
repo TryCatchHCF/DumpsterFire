@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Filename:  osx_rickroll_open_wikipedia_page.py
 #
@@ -23,19 +23,19 @@ from FireModules.fire_module_base_class import *
 
 class osx_rickroll_open_wikipedia_page( FireModule ):
 
-	def __init__(self):
-		self.commentsStr = "Shenanigans/osx_rickroll_open_wikipedia_page"
-		self.textToSayStr = ""
+        def __init__(self):
+                self.commentsStr = "Shenanigans/osx_rickroll_open_wikipedia_page"
+                self.textToSayStr = ""
 
-	def __init__(self, moofStr):
-		self.moofStr = moofStr
-		self.commentsStr = "Shenanigans/osx_rickroll_open_wikipedia_page"
-		self.textToSayStr = ""
-		return;
+        def __init__(self, moofStr):
+                self.moofStr = moofStr
+                self.commentsStr = "Shenanigans/osx_rickroll_open_wikipedia_page"
+                self.textToSayStr = ""
+                return;
 
-	def Description( self ):
-		self.Description = "Opens Wikipedia Rick Astley webpage"
-		return self.Description
+        def Description( self ):
+                self.Description = "Opens Wikipedia Rick Astley webpage"
+                return self.Description
 
         def Configure( self ):
                 self.configStr = "(None)"
@@ -49,15 +49,15 @@ class osx_rickroll_open_wikipedia_page( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print( self.commentsStr + ": Setting Logging flag!" )
+                print( logFlag )
                 return
 
         def Ignite( self ):
 
-		print self.commentsStr + ": Opening Wikipedia Rick Astley webpage"
-		self.commandStr = "open https://en.wikipedia.org/wiki/Rick_Astley"
-		os.system( self.commandStr )
+                print( self.commentsStr + ": Opening Wikipedia Rick Astley webpage" )
+                self.commandStr = "open https://en.wikipedia.org/wiki/Rick_Astley"
+                os.system( self.commandStr )
 
-		return
+                return
 

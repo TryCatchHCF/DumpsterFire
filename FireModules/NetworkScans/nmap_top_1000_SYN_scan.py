@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Filename:  
 #
@@ -24,24 +24,24 @@ from FireModules.fire_module_base_class import *
 
 class nmap_top_1000_SYN_scan( FireModule ):
 
-	def __init__(self):
-		self.commentsStr = "NetworkScans/nmap_top_1000_SYN_scan"
-		return
+        def __init__(self):
+                self.commentsStr = "NetworkScans/nmap_top_1000_SYN_scan"
+                return
 
-	def __init__(self, moofStr):
-		self.moofStr = moofStr
-		self.commentsStr = "NetworkScans/nmap_top_1000_SYN_scan"
-		return
+        def __init__(self, moofStr):
+                self.moofStr = moofStr
+                self.commentsStr = "NetworkScans/nmap_top_1000_SYN_scan"
+                return
 
-	def Description( self ):
-		self.Description = "Runs nmap, SYN scan of Top 1000 ports & services on hosts of target network"
-		return self.Description
+        def Description( self ):
+                self.Description = "Runs nmap, SYN scan of Top 1000 ports & services on hosts of target network"
+                return self.Description
 
 
         def Configure( self ):
-		print "Standard nmap targets accepted, e.g.  192.168.0.1  or  192.168.1-254 or comma-separated IP addresses"
-		print ""
-                self.networkAddrStr = raw_input( "Enter Target Network IP Address (W.X.Y.Z): " )
+                print( "Standard nmap targets accepted, e.g.  192.168.0.1  or  192.168.1-254 or comma-separated IP addresses" )
+                print( "" )
+                self.networkAddrStr = input( "Enter Target Network IP Address (W.X.Y.Z): " )
                 return
 
         def GetParameters( self ):
@@ -52,19 +52,19 @@ class nmap_top_1000_SYN_scan( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print( self.commentsStr + ": Setting Logging flag!" )
+                print( logFlag )
                 return
 
         def Ignite( self ):
 
                 if ( self.networkAddrStr == "" ):
-                        print "##", self.commentsStr, ": Error - Network address string is blank"
+                        print( "##", self.commentsStr, ": Error - Network address string is blank" )
                         return
-		else:
-			self.commandStr = "nmap -Pn -n --open -sV -sC " + self.networkAddrStr 
-			print self.commentsStr + ": Scanning with " + self.commandStr
-			os.system( self.commandStr )
+                else:
+                        self.commandStr = "nmap -Pn -n --open -sV -sC " + self.networkAddrStr 
+                        print( self.commentsStr + ": Scanning with " + self.commandStr )
+                        os.system( self.commandStr )
 
-		return
+                return
 

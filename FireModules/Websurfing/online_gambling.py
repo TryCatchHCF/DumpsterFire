@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Filename:  
 #
@@ -15,66 +15,66 @@
 #
 #
 
-import urllib, time, random
+import urllib.request, time, random
 
 from FireModules.fire_module_base_class import *
 
 class online_gambling( FireModule ):
 
-	def __init__(self):
-		self.commentsStr = "Websurfing/online_gambling"
+        def __init__(self):
+                self.commentsStr = "Websurfing/online_gambling"
 
-	def __init__(self, moofStr):
-		self.moofStr = moofStr
-		self.commentsStr = "Websurfing/online_gambling"
-		return;
+        def __init__(self, moofStr):
+                self.moofStr = moofStr
+                self.commentsStr = "Websurfing/online_gambling"
+                return;
 
-	def Description( self ):
-		self.Description = "Visits various online gambling sites"
-		return self.Description
+        def Description( self ):
+                self.Description = "Visits various online gambling sites"
+                return self.Description
 
-	def Configure( self ):
-		return
+        def Configure( self ):
+                return
 
-	def GetParameters( self ):
-		return ""
+        def GetParameters( self ):
+                return ""
 
-	def SetParameters( self, parametersStr ):
-		print self.commentsStr + ": Setting parameters!"
-		print parametersStr
-		return
+        def SetParameters( self, parametersStr ):
+                print( self.commentsStr + ": Setting parameters!" )
+                print( parametersStr )
+                return
 
-	def ActivateLogging( self, logFlag ):
-		print self.commentsStr + ": Setting Logging flag!"
-		print logFlag
-		return
+        def ActivateLogging( self, logFlag ):
+                print( self.commentsStr + ": Setting Logging flag!" )
+                print( logFlag )
+                return
 
-	def Ignite( self ):
+        def Ignite( self ):
 
-		print self.commentsStr + ": Opening URL session to GamblingSites.org landing page"
-		self.webSession = urllib.urlopen( 'https://www.gamblingsites.org' )
-		trash = self.webSession.read()
+                print( self.commentsStr + ": Opening URL session to GamblingSites.org landing page" )
+                self.webSession = urllib.request.urlopen( 'https://www.gamblingsites.org' )
+                trash = self.webSession.read()
 
-		self.SleepSession()
+                self.SleepSession()
 
-		print self.commentsStr + ": Opening URL session to CaesarsCasino.com landing page"
-		self.webSession = urllib.urlopen( 'https://www.caesarscasino.com' )
-		trash = self.webSession.read()
+                print( self.commentsStr + ": Opening URL session to CaesarsCasino.com landing page" )
+                self.webSession = urllib.request.urlopen( 'https://www.caesarscasino.com' )
+                trash = self.webSession.read()
 
-		self.SleepSession()
+                self.SleepSession()
 
-		print self.commentsStr + ": Opening URL session to CasinoAus.com landing page"
-		self.webSession = urllib.urlopen( 'https://www.casinoaus.com' )
-		trash = self.webSession.read()
+                print( self.commentsStr + ": Opening URL session to CasinoAus.com landing page" )
+                self.webSession = urllib.request.urlopen( 'https://www.casinoaus.com' )
+                trash = self.webSession.read()
 
-		return
+                return
 
 
-	def SleepSession( self ):
+        def SleepSession( self ):
 
-		# Random sleep from 5-100 seconds, because humans read
-		seconds = random.randint( 5, 100 )
-		print "Sleeping for", seconds, "seconds to simulate human browsing habits"
-		time.sleep( seconds )
+                # Random sleep from 5-100 seconds, because humans read
+                seconds = random.randint( 5, 100 )
+                print( "Sleeping for", seconds, "seconds to simulate human browsing habits" )
+                time.sleep( seconds )
 
-		return
+                return

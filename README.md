@@ -2,7 +2,7 @@
 
 DumpsterFire Toolset - "Security Incidents In A Box!"
 
-(Update 05/27/2020: Yes, I'll be migrating all of my Github projects to Python3 over the summer of 2020.)
+(Update 09/02/2026: The toolset has been migrated to Python 3.)
 
 The DumpsterFire Toolset is a modular, menu-driven, cross-platform tool for building repeatable, time-delayed, distributed security events. Easily create custom event chains for Blue Team drills and sensor / alert mapping. Red Teams can create decoy incidents, distractions, and lures to support and scale their operations. Turn paper tabletop exercises into controlled "live fire" range events. Build event sequences ("narratives") to simulate realistic scenarios and generate corresponding network and filesystem artifacts.
 
@@ -80,7 +80,7 @@ Want to open the system's default browser and stream all of that Rick Astley awe
 **&#95;&#95;init&#95;&#95;.py** files - Required to make Python treat directories as containing Python packages, allows DumpsterFire toolset to find and load Fire modules.
 
 # Requirements
-Python 2.7.x
+Python 3
 
 # Run DumpsterFire Factory
 $ ./dumpsterFireFactory.py

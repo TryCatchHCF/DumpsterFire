@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Filename:  
 #
@@ -24,20 +24,20 @@ from FireModules.fire_module_base_class import *
 
 class custom_url( FireModule ):
 
-	def __init__(self):
-		self.commentsStr = "Websurfing/custom_url"
+        def __init__(self):
+                self.commentsStr = "Websurfing/custom_url"
 
-	def __init__(self, moofStr):
-		self.moofStr = moofStr
-		self.commentsStr = "Websurfing/custom_url"
-		return;
+        def __init__(self, moofStr):
+                self.moofStr = moofStr
+                self.commentsStr = "Websurfing/custom_url"
+                return;
 
-	def Description( self ):
-		self.Description = "Opens a Web connection to the supplied URL"
-		return self.Description
+        def Description( self ):
+                self.Description = "Opens a Web connection to the supplied URL"
+                return self.Description
 
         def Configure( self ):
-                self.customUrlStr = raw_input( "Enter URL: " )
+                self.customUrlStr = input( "Enter URL: " )
                 return
 
         def GetParameters( self ):
@@ -48,20 +48,20 @@ class custom_url( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print( self.commentsStr + ": Setting Logging flag!" )
+                print( logFlag )
                 return
 
         def Ignite( self ):
 
                 if ( self.customUrlStr == "" ):
-                        print "## ", self.commentsStr, ": Error - URL is blank"
+                        print( "## ", self.commentsStr, ": Error - URL is blank" )
                         return
 
-		else:
-			print self.commentsStr + ": Opening connection to URL => " + self.customUrlStr
-			self.webSession = urllib.urlopen( self.customUrlStr )
-			trash = self.webSession.read()	
+                else:
+                        print( self.commentsStr + ": Opening connection to URL => " + self.customUrlStr )
+                        self.webSession = urllib.request.urlopen( self.customUrlStr )
+                        trash = self.webSession.read()	
 
-		return
+                return
 

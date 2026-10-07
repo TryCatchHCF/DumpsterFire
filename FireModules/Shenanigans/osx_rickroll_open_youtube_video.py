@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Filename:  osx_rickroll_open_youtube_video.py
 #
@@ -23,19 +23,19 @@ from FireModules.fire_module_base_class import *
 
 class osx_rickroll_open_youtube_video( FireModule ):
 
-	def __init__(self):
-		self.commentsStr = "Shenanigans/osx_rickroll_open_youtube_video"
-		self.textToSayStr = ""
+        def __init__(self):
+                self.commentsStr = "Shenanigans/osx_rickroll_open_youtube_video"
+                self.textToSayStr = ""
 
-	def __init__(self, moofStr):
-		self.moofStr = moofStr
-		self.commentsStr = "Shenanigans/osx_rickroll_open_youtube_video"
-		self.textToSayStr = ""
-		return;
+        def __init__(self, moofStr):
+                self.moofStr = moofStr
+                self.commentsStr = "Shenanigans/osx_rickroll_open_youtube_video"
+                self.textToSayStr = ""
+                return;
 
-	def Description( self ):
-		self.Description = "Opens default browser and starts YouTube video of Rick Astley. After turning system volume up to maximum."
-		return self.Description
+        def Description( self ):
+                self.Description = "Opens default browser and starts YouTube video of Rick Astley. After turning system volume up to maximum."
+                return self.Description
 
         def Configure( self ):
                 self.configStr = "(None)"
@@ -49,18 +49,18 @@ class osx_rickroll_open_youtube_video( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print( self.commentsStr + ": Setting Logging flag!" )
+                print( logFlag )
                 return
 
         def Ignite( self ):
 
-		print self.commentsStr + ": Setting system audio to max volume"
-		os.system( "osascript -e 'set volume output volume 100'")
+                print( self.commentsStr + ": Setting system audio to max volume" )
+                os.system( "osascript -e 'set volume output volume 100'")
 
-		print self.commentsStr + ": Opening Rick Astley Youtube video"
-		self.commandStr = "open https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-		os.system( self.commandStr )
+                print( self.commentsStr + ": Opening Rick Astley Youtube video" )
+                self.commandStr = "open https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                os.system( self.commandStr )
 
-		return
+                return
 

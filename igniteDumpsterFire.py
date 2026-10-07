@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # 
 # Filename:  igniteDumsterFire.py 
 #
@@ -34,25 +34,25 @@ import os, sys, getopt, dumpsterFireFactory
 
 def IgniteDumpsterFireHeadless( dumpsterFireName ):
 
-	# Load the named Dumpster Fire
-	hotDumpsterFire = dumpsterFireFactory.LoadDumpsterFireConfig( dumpsterFireName )
+        # Load the named Dumpster Fire
+        hotDumpsterFire = dumpsterFireFactory.LoadDumpsterFireConfig( dumpsterFireName )
 
-	dumpsterFireFactory.IgniteDumpsterFire( hotDumpsterFire, hotDumpsterFire.mLaunchDateTimeUTC, False )
+        dumpsterFireFactory.IgniteDumpsterFire( hotDumpsterFire, hotDumpsterFire.mLaunchDateTimeUTC, False )
 
-	return
+        return
 
 
 
 if __name__ == "__main__":
-	if ( len(sys.argv) != 2 ):
-		print ""
-		print "usage: igniteDumpsterFire.py <DumpsterFireName>"
-		print ""
-		print "Example: ./igniteDumpsterFire.py my_dumpsterfire.fyr"
-		print ""
+        if ( len(sys.argv) != 2 ):
+                print( "" )
+                print( "usage: igniteDumpsterFire.py <DumpsterFireName>" )
+                print( "" )
+                print( "Example: ./igniteDumpsterFire.py my_dumpsterfire.fyr" )
+                print( "" )
 
-		exit
+                exit
 
-	else:
-		IgniteDumpsterFireHeadless( sys.argv[ 1 ])
+        else:
+                IgniteDumpsterFireHeadless( sys.argv[ 1 ])
 

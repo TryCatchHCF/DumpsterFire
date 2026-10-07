@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Filename:  
 #
@@ -24,22 +24,22 @@ from FireModules.fire_module_base_class import *
 
 class osx_say_text( FireModule ):
 
-	def __init__(self):
-		self.commentsStr = "Shenanigans/osx_say_text"
-		self.textToSayStr = ""
+        def __init__(self):
+                self.commentsStr = "Shenanigans/osx_say_text"
+                self.textToSayStr = ""
 
-	def __init__(self, moofStr):
-		self.moofStr = moofStr
-		self.commentsStr = "Shenanigans/osx_say_text"
-		self.textToSayStr = ""
-		return;
+        def __init__(self, moofStr):
+                self.moofStr = moofStr
+                self.commentsStr = "Shenanigans/osx_say_text"
+                self.textToSayStr = ""
+                return;
 
-	def Description( self ):
-		self.Description = "Runs OSX terminal's 'say' command, speaks the configured string"
-		return self.Description
+        def Description( self ):
+                self.Description = "Runs OSX terminal's 'say' command, speaks the configured string"
+                return self.Description
 
         def Configure( self ):
-                self.textToSayStr = raw_input( "Text to speak: " )
+                self.textToSayStr = input( "Text to speak: " )
                 return
 
         def GetParameters( self ):
@@ -50,23 +50,23 @@ class osx_say_text( FireModule ):
                 return
 
         def ActivateLogging( self, logFlag ):
-                print self.commentsStr + ": Setting Logging flag!"
-                print logFlag
+                print( self.commentsStr + ": Setting Logging flag!" )
+                print( logFlag )
                 return
 
         def Ignite( self ):
 
                 if ( self.textToSayStr == "" ):
-                        print "## ", self.commentsStr, ": Error - Speech string is blank"
+                        print( "## ", self.commentsStr, ": Error - Speech string is blank" )
                         return
 
-		else:
-			print self.commentsStr + ": Setting system audio to max volume"
-			os.system( "osascript -e 'set volume output volume 100'")
+                else:
+                        print( self.commentsStr + ": Setting system audio to max volume" )
+                        os.system( "osascript -e 'set volume output volume 100'")
 
-			print self.commentsStr + ": Speaking the following text => " + self.textToSayStr
-			self.sayStr = "say " + self.textToSayStr 
-			os.system( self.sayStr )
+                        print( self.commentsStr + ": Speaking the following text => " + self.textToSayStr )
+                        self.sayStr = "say " + self.textToSayStr 
+                        os.system( self.sayStr )
 
-		return
+                return
 

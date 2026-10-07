@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 #
 # Filename:  fire_module_base_class.py
 #
@@ -14,24 +14,24 @@
 
 class FireModule:
 
-	def Configure():
-		print "Base Class: Getting configs!"
-		return
+        def Configure():
+                print( "Base Class: Getting configs!" )
+                return
 
-	def GetParameters():
-		return "Base Class: Parameters!"
+        def GetParameters():
+                return "Base Class: Parameters!"
 
-	def SetParameters( parametersStr ):
-		print "Base Class: Setting parameters!"
-		print parametersStr
-		return
+        def SetParameters( parametersStr ):
+                print( "Base Class: Setting parameters!" )
+                print( parametersStr )
+                return
 
-	def ActivateLogging( logFlag ):
-		print "Base Class: Setting Logging flag!"
-		print logFlag
-		return
+        def ActivateLogging( logFlag ):
+                print( "Base Class: Setting Logging flag!" )
+                print( logFlag )
+                return
 
-	def Ignite():
-		print "Base Class: Such Fire! Much Heat!"
-		return
+        def Ignite():
+                print( "Base Class: Such Fire! Much Heat!" )
+                return
 
